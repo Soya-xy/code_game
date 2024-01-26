@@ -1,0 +1,27 @@
+{
+  "cSpell.words": [
+    "antfu",
+    "demi",
+    "iconify",
+    "intlify",
+    "pinia",
+    "pnpm",
+    "unocss",
+    "unplugin",
+    "Vite",
+    "vitejs",
+    "Vitesse",
+    "vitest",
+    "vueuse",
+    "yahei"
+  ],
+  "prettier.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "files.associations": {
+    "*.css": "css"
+  },
+  "editor.formatOnSave": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
