@@ -7,6 +7,7 @@ import * as directives from 'vuetify/directives'
 
 // import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import * as labsComponents from 'vuetify/labs/components'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
 // Translations provided by Vuetify
 import { en } from 'vuetify/locale'
@@ -22,6 +23,13 @@ import 'vuetify/styles'
 let vuetifyConfig: VuetifyOptions = {
   // Global configuration
   // https://vuetifyjs.com/en/features/global-configuration/
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi,
+    },
+  },
   /*
   defaults: {
     global: {

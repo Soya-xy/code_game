@@ -15,6 +15,8 @@ declare module 'vue' {
     AListItem: typeof import('@arco-design/web-vue')['ListItem']
     ASpin: typeof import('@arco-design/web-vue')['Spin']
     Button: typeof import('./components/Button/index.vue')['default']
+    Code: typeof import('./components/Code/Index.vue')['default']
+    CodeSwiper: typeof import('./components/Code/Swiper.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
