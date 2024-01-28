@@ -29,12 +29,12 @@ const items = ref([
           <v-row align="center" justify="center" items-center class="p-4">
             <v-col
               v-for="(_v, i) in 20" :key="i"
-              sm="4"
+              cols="4"
             >
               <v-card class="mx-auto" col max-width="344" variant="elevated" elevation="5">
                 <v-card-item>
                   <div flex="~ col" justify="center">
-                    <img src="https://img.cooe.in/media/caishen-wins_rounded_200.png" class="h-30 w-30">
+                    <img src="https://img.cooe.in/media/caishen-wins_rounded_200.png" class="h-20 w-full">
                     <div class="mt-1 text-center">
                       Caishen Wins
                     </div>

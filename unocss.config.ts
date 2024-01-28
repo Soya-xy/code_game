@@ -30,7 +30,6 @@ export default defineConfig({
         mono: 'DM Mono',
       },
       provider: 'bunny',
-
     }),
   ],
   transformers: [
