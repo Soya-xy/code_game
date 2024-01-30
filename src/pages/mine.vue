@@ -39,16 +39,16 @@ const router = useRouter()
             </p>
           </div>
           <div justify="between" mt-2 flex items-center>
-            <div flex="~ col" items-center>
+            <div flex="~ col" items-center @click="router.push('/recharge')">
               <v-btn mb-2 icon="i-mdi-credit-card-check-outline" size="small" :elevation="10" color="#1565c0" />Recharge
             </div>
-            <div flex="~ col" items-center>
+            <div flex="~ col" items-center @click="router.push('/withdraw')">
               <v-btn mb-2 icon="i-mdi-cash-check" size="small" :elevation="10" color="#1565c0" />Withdraw
             </div>
-            <div flex="~ col" items-center>
+            <div flex="~ col" items-center @click="router.push('/transactions')">
               <v-btn mb-2 icon="i-mdi-ballot-recount-outline" size="small" :elevation="10" color="#1565c0" />Transactions
             </div>
-            <div flex="~ col" items-center>
+            <div flex="~ col" items-center @click="router.push('/bank')">
               <v-btn mb-2 icon="i-mdi-credit-card-outline" size="small" :elevation="10" color="#1565c0" />Bank Card
             </div>
           </div>
