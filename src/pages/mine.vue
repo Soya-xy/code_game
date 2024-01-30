@@ -60,7 +60,7 @@ const router = useRouter()
               <template #activator="{ props }">
                 <v-list-item
                   v-bind="props" prepend-icon="i-mdi-security" title="Account Security"
-                  active-color="#5713d4"
+                  color="#5713d4"
                 />
               </template>
 
@@ -71,7 +71,7 @@ const router = useRouter()
 
             <v-list-group value="Admin" collapse-icon="i-mdi-menu-up" expand-icon="i-mdi-menu-down">
               <template #activator="{ props }">
-                <v-list-item v-bind="props" title="About" prepend-icon="i-mdi-message-alert" active-color="#5713d4" />
+                <v-list-item v-bind="props" title="About" prepend-icon="i-mdi-message-alert" color="#5713d4" />
               </template>
 
               <v-list-item title="Privacy Policy" link />

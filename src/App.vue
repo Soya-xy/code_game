@@ -1,8 +1,8 @@
 <script setup>
-// 监听resize事件，网页刷新
-window.addEventListener('resize', () => {
-  window.location.reload()
-})
+import { useLocale } from 'vuetify'
+
+const { current } = useLocale()
+console.log('🚀 ~ current:', current)
 </script>
 
 <template>

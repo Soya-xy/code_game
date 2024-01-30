@@ -7,7 +7,7 @@
       height="125" :show-arrows="false" interval="40000"
       hide-delimiters cycle my-2 px-2
     >
-      <v-carousel-item v-for="v in 5" :key="v" :src="`/img/lunbo${v}.png`" selected-class="selected-item" />
+      <v-carousel-item v-for="v in 2" :key="v" :src="`/img/lunbo${v}.png`" selected-class="selected-item" />
     </v-carousel>
   </div>
 </template>

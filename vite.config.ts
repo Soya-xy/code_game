@@ -1,4 +1,8 @@
-import path from 'node:path'
+/**
+ * @ts-ignore
+ */
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
@@ -13,10 +17,15 @@ import vuetify from 'vite-plugin-vuetify'
 import autoprefixer from 'autoprefixer'
 import VueMacros from 'unplugin-vue-macros/vite'
 
+const _dirname
+  = typeof __dirname !== 'undefined'
+    ? __dirname
+    : dirname(fileURLToPath(import.meta.url))
+
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '~/': `${resolve(_dirname, 'src')}/`,
     },
   },
 

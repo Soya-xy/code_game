@@ -1,10 +1,14 @@
 <script setup lang='ts'>
+import { useI18n } from 'vue-i18n'
 import Swiper from '~/components/Code/Swiper.vue'
 import NoticeBarVue from '~/components/NoticeBar/index.vue'
+import Lang from '~/components/lang.vue'
+
+const { t: $t } = useI18n()
 
 const tab = ref()
 const items = ref([
-  'CODE GAMES',
+  $t('CODE GAMES'),
   'PG GAMES',
 ])
 </script>
@@ -13,7 +17,10 @@ const items = ref([
   <div>
     <v-toolbar color="#5713d4" elevation="4" height="50" extension-height="40">
       <v-toolbar-title>Woner</v-toolbar-title>
-      <v-btn icon="i-mdi-bell" />
+      <div>
+        <v-btn icon="i-mdi-bell" />
+        <Lang />
+      </div>
       <template #extension>
         <div w-full>
           <v-tabs
@@ -28,8 +35,8 @@ const items = ref([
       </template>
     </v-toolbar>
     <v-window v-model="tab">
-      <v-window-item v-for="item in items" :key="item" :value="item">
-        <div v-if="item === 'CODE GAMES'" class="h-[calc(100vh-150px)] bg-[#FAFAFA] pb-24">
+      <v-window-item v-for="(item, index) in items" :key="item" :value="item">
+        <div v-if="index === 0" class="h-[calc(100vh-150px)] overflow-y-scroll bg-[#FAFAFA] pb-24">
           <Swiper />
           <NoticeBarVue
             text="Welcome to Woner to keep the game exciting!" background="#E4E0EC"

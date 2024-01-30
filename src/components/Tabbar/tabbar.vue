@@ -42,7 +42,7 @@ watch(() => route.name, (name) => {
     </v-btn>
 
     <v-btn :value="1" @click="jump('promotion')">
-      <v-icon icon="i-mdi-tag-heart" size="24" />
+      <v-icon icon="i-mdi-tag-heart" />
       <span>Promotion</span>
     </v-btn>
 
