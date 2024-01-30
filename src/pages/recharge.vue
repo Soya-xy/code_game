@@ -76,4 +76,5 @@ meta:
   layout: nav
   icon: i-mdi-text-long
   path: /recharge_log
+  title: Recharge
 </route>

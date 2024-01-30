@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const router = useRouter()
-const icon = computed<any>(() => useRouter().currentRoute.value.meta)
+const icon = computed<any>(() => router?.currentRoute?.value?.meta)
 function jump() {
-  if (icon.value.path)
+  if (icon.value?.path)
     router.push(icon.value.path)
 }
 </script>
@@ -13,7 +13,7 @@ function jump() {
       <v-layout>
         <v-app-bar elevation="3" color="#5713d4" :height="56">
           <v-btn icon="i-mdi-arrow-left" @click="router.back()" />
-          <v-app-bar-title>Promotion</v-app-bar-title>
+          <v-app-bar-title>{{ icon.title }}</v-app-bar-title>
           <template v-if="icon.icon" #append>
             <v-btn :icon="icon.icon" @click="jump" />
           </template>
