@@ -4,8 +4,8 @@ const tab = ref(1)
 </script>
 
 <template>
-  <v-layout full-height>
-    <v-app-bar elevation="3" color="#5713d4">
+  <v-layout>
+    <v-app-bar elevation="3" color="#5713d4" :height="56">
       <v-app-bar-title>Promotion</v-app-bar-title>
       <template #append>
         <v-btn icon="i-mdi-text-long" />
@@ -13,9 +13,9 @@ const tab = ref(1)
     </v-app-bar>
 
     <v-main>
-      <v-container fluid bg="#FAFAFA" class="min-h-[calc(100vh-120px)]">
+      <v-container bg="#FAFAFA" class="h-[calc(100vh-120px)] overflow-scroll p2">
         <v-card :elevation="3">
-          <v-card :title="`Bonus: ₹ ${money}`" rounded="0" flex flex-col items-center>
+          <v-card :title="`Bonus: ₹ ${(money).toFixed(2)}`" rounded="0" flex flex-col items-center>
             <template #actions>
               <v-btn color="#5713d4" variant="flat" :elevation="2" :rounded="0" my-3>
                 Apply to Balance
@@ -55,8 +55,7 @@ const tab = ref(1)
                       <div pt-4>
                         <v-textarea
                           model-value="https://cooe.in/#/register?r_code=95357ACG" label="My Promotion Link"
-                          variant="underlined" readonly
-                          rows="3"
+                          variant="underlined" readonly rows="3"
                         />
                       </div>
                     </div>

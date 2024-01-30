@@ -16,9 +16,13 @@ function jump(v: string, to = true) {
       to && router.push({ name: 'promotion' })
       tabbar.setActive(1)
       break
+    case 'support':
+      to && router.push({ name: 'support' })
+      tabbar.setActive(2)
+      break
     case 'mine':
       to && router.push({ name: 'mine' })
-      tabbar.setActive(2)
+      tabbar.setActive(3)
       break
   }
 }
@@ -31,18 +35,23 @@ watch(() => route.name, (name) => {
 </script>
 
 <template>
-  <v-bottom-navigation v-model="active" :elevation="3" active absolute grow class="custom-tabbar" color="primary">
+  <v-bottom-navigation v-model="active" :elevation="3" active fixed grow class="custom-tabbar" color="primary">
     <v-btn :value="0" @click="jump('index')">
       <v-icon icon="i-mdi-controller" />
       <span>Home</span>
     </v-btn>
 
     <v-btn :value="1" @click="jump('promotion')">
-      <v-icon icon="i-mdi-tag-heart" />
+      <v-icon icon="i-mdi-tag-heart" size="24" />
       <span>Promotion</span>
     </v-btn>
 
-    <v-btn :value="2" @click="jump('mine')">
+    <v-btn :value="2" @click="jump('support')">
+      <v-icon icon="i-mdi-face-agent" />
+      <span>Support</span>
+    </v-btn>
+
+    <v-btn :value="3" @click="jump('mine')">
       <v-icon icon="i-mdi-face-man" />
       <span>Mine</span>
     </v-btn>

@@ -7,20 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    ACarousel: typeof import('@arco-design/web-vue')['Carousel']
-    ACarouselItem: typeof import('@arco-design/web-vue')['CarouselItem']
-    ACollapse: typeof import('@arco-design/web-vue')['Collapse']
-    ACollapseItem: typeof import('@arco-design/web-vue')['CollapseItem']
-    AList: typeof import('@arco-design/web-vue')['List']
-    AListItem: typeof import('@arco-design/web-vue')['ListItem']
-    ASpin: typeof import('@arco-design/web-vue')['Spin']
-    Button: typeof import('./components/Button/index.vue')['default']
     Code: typeof import('./components/Code/Index.vue')['default']
     CodeSwiper: typeof import('./components/Code/Swiper.vue')['default']
-    Header: typeof import('./components/Header.vue')['default']
+    NoticeBar: typeof import('./components/NoticeBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TabbarTabbar: typeof import('./components/Tabbar/tabbar.vue')['default']
-    VideoPlay: typeof import('./components/VideoPlay.vue')['default']
   }
 }

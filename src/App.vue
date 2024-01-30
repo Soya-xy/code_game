@@ -6,7 +6,7 @@ window.addEventListener('resize', () => {
 </script>
 
 <template>
-  <v-app class="mx-auto max-w-500px overflow-hidden">
+  <v-app class="mx-auto max-w-500px overflow-x-hidden">
     <RouterView />
   </v-app>
 </template>

@@ -1,4 +1,7 @@
 <script setup lang='ts'>
+import Swiper from '~/components/Code/Swiper.vue'
+import NoticeBarVue from '~/components/NoticeBar/index.vue'
+
 const tab = ref()
 const items = ref([
   'CODE GAMES',
@@ -8,12 +11,15 @@ const items = ref([
 
 <template>
   <div>
-    <v-toolbar color="#5713d4">
-      <v-toolbar-title>Your Dashboard</v-toolbar-title>
-      <v-btn icon="i-mdi-cog" />
+    <v-toolbar color="#5713d4" elevation="4" height="50" extension-height="40">
+      <v-toolbar-title>Woner</v-toolbar-title>
+      <v-btn icon="i-mdi-bell" />
       <template #extension>
         <div w-full>
-          <v-tabs v-model="tab" align-tabs="center">
+          <v-tabs
+            v-model="tab" align-tabs="center"
+            fixed-tabs
+          >
             <v-tab v-for="item in items" :key="item" :value="item">
               {{ item }}
             </v-tab>
@@ -21,20 +27,29 @@ const items = ref([
         </div>
       </template>
     </v-toolbar>
-
     <v-window v-model="tab">
       <v-window-item v-for="item in items" :key="item" :value="item">
-        <Code v-if="item === 'CODE GAMES'" />
+        <div v-if="item === 'CODE GAMES'" class="h-[calc(100vh-150px)] bg-[#FAFAFA] pb-24">
+          <Swiper />
+          <NoticeBarVue
+            text="Welcome to Woner to keep the game exciting!" background="#E4E0EC"
+            left-icon="i-mdi-bell text-[#5713D4]"
+          />
+          <Code />
+        </div>
         <template v-else>
-          <v-row align="center" justify="center" items-center class="p-4">
-            <v-col
-              v-for="(_v, i) in 20" :key="i"
-              cols="4"
-            >
-              <v-card class="mx-auto" col max-width="344" variant="elevated" elevation="5">
+          <v-row align="center" items-center class="p-4">
+            <v-col v-for="(_v, i) in 20" :key="i" cols="4" p="1">
+              <v-card variant="elevated" elevation="2">
                 <v-card-item>
-                  <div flex="~ col" justify="center">
-                    <img src="https://img.cooe.in/media/caishen-wins_rounded_200.png" class="h-20 w-full">
+                  <div>
+                    <v-img
+                      class="bg-whit rounded-4"
+                      :width="140"
+                      :aspect-ratio="1"
+                      cover
+                      src="https://img.cooe.in/media/caishen-wins_rounded_200.png"
+                    />
                     <div class="mt-1 text-center">
                       Caishen Wins
                     </div>

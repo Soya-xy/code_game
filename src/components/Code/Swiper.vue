@@ -3,8 +3,18 @@
 
 <template>
   <div>
-    <v-carousel hide-delimiters height="241" :show-arrows="false">
-      <v-carousel-item src="https://img.cooe.in/media/home_img1_vb7mNRR.jpg" />
+    <v-carousel
+      height="125" :show-arrows="false" interval="40000"
+      hide-delimiters cycle my-2 px-2
+    >
+      <v-carousel-item v-for="v in 5" :key="v" :src="`/img/lunbo${v}.png`" selected-class="selected-item" />
     </v-carousel>
   </div>
 </template>
+
+<style scoped>
+.selected-item :deep(.v-img__img) {
+  object-fit: fill;
+  border-radius: 10px;
+}
+</style>

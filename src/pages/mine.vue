@@ -5,7 +5,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <v-layout full-height>
+  <v-layout>
     <v-app-bar color="#e0e0e0" :height="56">
       <v-app-bar-title>Download App</v-app-bar-title>
       <template #prepend>
@@ -25,7 +25,7 @@ const router = useRouter()
     </v-app-bar>
 
     <v-main>
-      <v-container fluid bg="#FAFAFA" class="min-h-[calc(100vh-120px)]">
+      <v-container fluid bg="#FAFAFA" class="min-h-[calc(100vh-162px)] p2">
         <v-card rounded="0" p3 py4 :elevation="3">
           <div text="14px" font-bold>
             <p>ID: <span>345789</span></p>
@@ -38,7 +38,7 @@ const router = useRouter()
               </v-btn>
             </p>
           </div>
-          <div justify="between" mt-5 flex items-center>
+          <div justify="between" mt-2 flex items-center>
             <div flex="~ col" items-center>
               <v-btn mb-2 icon="i-mdi-credit-card-check-outline" size="small" :elevation="10" color="#1565c0" />Recharge
             </div>
@@ -54,8 +54,8 @@ const router = useRouter()
           </div>
         </v-card>
 
-        <v-card rounded="0" mt-5 p2 :elevation="3">
-          <v-list>
+        <v-card rounded="0" mt-2 :elevation="3">
+          <v-list border>
             <v-list-group value="Users" collapse-icon="i-mdi-menu-up" expand-icon="i-mdi-menu-down">
               <template #activator="{ props }">
                 <v-list-item
@@ -67,7 +67,7 @@ const router = useRouter()
               <v-list-item title="Reset Password" link />
             </v-list-group>
 
-            <v-list-item prepend-icon="i-mdi-message-bulleted" title="Complaints & Suggestions" link />
+            <v-list-item prepend-icon="i-mdi-message-bulleted" title="Complaints & Suggestions" link border />
 
             <v-list-group value="Admin" collapse-icon="i-mdi-menu-up" expand-icon="i-mdi-menu-down">
               <template #activator="{ props }">
