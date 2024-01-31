@@ -7,6 +7,9 @@
 // https://next.vuetifyjs.com/features/sass-variables/
 @forward 'vuetify/settings' with ( // Place SASS variable overrides here
   $button-font-weight: 600,
+  $button-text-transform: 'none',
+  $button-border-radius: 0,
+
 );
 
 // Fix for monospace Font.

@@ -1,16 +1,32 @@
 <script setup lang='ts'>
+const router = useRouter()
 const games = [{
   name: 'Win Go',
+  sub: '1Min',
   img: '/img/win01.png',
+  url: '/games/wingo',
 }, {
-  name: 'Lucky Hit',
+  name: 'Win Go',
+  sub: '3Min',
+  img: '/img/win03.png',
+  url: '/games/wingo',
+}, {
+  name: 'Win Go',
+  sub: '5Min',
+  img: '/img/win05.png',
+  url: '/games/wingo',
+}, {
+  name: 'Bit Game',
   img: '/img/bit02.png',
+  url: '/games/wingo',
 }, {
   name: 'Aviator',
   img: '/img/fly01.png',
+  url: '/games/wingo',
 }, {
   name: 'Mines',
   img: '/img/roc01.png',
+  url: '/games/wingo',
 }]
 </script>
 
@@ -18,11 +34,14 @@ const games = [{
   <v-row align="center" justify="center" class="m-0 p-2 pt-0">
     <v-col v-for="(v, i) in games" :key="i" cols="6" p-2 pt-0>
       <v-card class="mx-auto" col max-width="250" variant="elevated" elevation="5">
-        <v-card-item>
+        <v-card-item @click="router.push(v.url)">
           <div flex="~ col" justify="center">
             <img :src="v.img" class="w-full">
             <div class="mt-1 text-center">
               {{ v.name }}
+              <p>
+                {{ v.sub || '&nbsp;' }}
+              </p>
             </div>
           </div>
         </v-card-item>

@@ -1,15 +1,5 @@
 <script setup lang='ts'>
-const phone = ref('')
-const password = ref('')
-
-const form = ref()
-
-async function validate() {
-  const { valid } = await form.value.validate()
-
-  if (valid)
-    console.log('Form is valid')
-}
+const router = useRouter()
 </script>
 
 <template>
@@ -36,8 +26,8 @@ async function validate() {
           </v-btn>
 
           <div w-full flex justify="between">
-            <v-btn text="Register" color="#FAFAFA" variant="elevated" />
-            <v-btn text="Forget Password?" color="#FAFAFA" variant="elevated" />
+            <v-btn text="Register" color="#FAFAFA" variant="elevated" @click="router.push('/reg')" />
+            <v-btn text="Forget Password?" color="#FAFAFA" variant="elevated" @click="router.push('/forget')" />
           </div>
         </v-sheet>
       </v-container>

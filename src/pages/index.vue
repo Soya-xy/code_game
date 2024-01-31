@@ -15,13 +15,13 @@ const items = ref([
 
 <template>
   <div>
-    <v-toolbar color="#5713d4" elevation="4" height="50" extension-height="40">
-      <v-toolbar-title>Woner</v-toolbar-title>
+    <v-toolbar color="#5713d4" elevation="4" height="58" extension-height="40">
+      <v-toolbar-title><img src="/img/logo.png" w-25 alt="" srcset=""></v-toolbar-title>
       <div>
         <v-btn icon="i-mdi-bell" />
         <Lang />
       </div>
-      <template #extension>
+      <!-- <template #extension>
         <div w-full>
           <v-tabs
             v-model="tab" align-tabs="center"
@@ -32,11 +32,11 @@ const items = ref([
             </v-tab>
           </v-tabs>
         </div>
-      </template>
+      </template> -->
     </v-toolbar>
     <v-window v-model="tab">
       <v-window-item v-for="(item, index) in items" :key="item" :value="item">
-        <div v-if="index === 0" class="h-[calc(100vh-150px)] overflow-y-scroll bg-[#FAFAFA] pb-24">
+        <div v-if="index === 0" class="h-[calc(100vh-110px)] overflow-y-scroll bg-[#FAFAFA] pb-24">
           <Swiper />
           <NoticeBarVue
             text="Welcome to Woner to keep the game exciting!" background="#E4E0EC"
@@ -44,7 +44,7 @@ const items = ref([
           />
           <Code />
         </div>
-        <template v-else>
+        <!-- <template v-else>
           <v-row align="center" items-center class="p-4">
             <v-col v-for="(_v, i) in 20" :key="i" cols="4" p="1">
               <v-card variant="elevated" elevation="2">
@@ -65,7 +65,7 @@ const items = ref([
               </v-card>
             </v-col>
           </v-row>
-        </template>
+        </template> -->
       </v-window-item>
     </v-window>
   </div>
