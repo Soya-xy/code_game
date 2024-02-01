@@ -1,4 +1,8 @@
 <script setup lang='ts'>
+const { min = 180 } = defineProps<{
+  min: number
+}>()
+const emit = defineEmits(['start', 'end'])
 const continue_button_show = ref(true)
 const continue_button_disabled = ref(false)
 const guess_button_disabled = ref(false)
@@ -14,13 +18,17 @@ function startGame() {
   continue_button_show.value = true
   continue_button_disabled.value = false
   guess_button_disabled.value = false
+
+  emit('start')
 }
 function setNextTime() {
   const e = Date.parse(new Date().toString()) / 1e3
-  const a = 180 - e % 180
+  const a = min - e % min
 
-  if (a <= 30)
+  if (a <= (min < 180 ? 15 : 30)) {
     guess_button_disabled.value = true
+    emit('end')
+  }
 
   const i = a / 60
   const o = a % 60
@@ -30,9 +38,10 @@ function setNextTime() {
   nowTime.value.min_bit = Math.floor(i)
   nowTime.value.sec_ten = Math.floor(n)
   nowTime.value.sec_bit = Math.floor(s)
-  if (a === 180) {
+  if (a === min) {
     continue_button_show.value = false
     continue_button_disabled.value = true
+
     setTimeout(() => {
       continue_button_disabled.value = false
     }, 2500)

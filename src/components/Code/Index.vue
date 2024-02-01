@@ -4,17 +4,17 @@ const games = [{
   name: 'Win Go',
   sub: '1Min',
   img: '/img/win01.png',
-  url: '/games/wingo',
+  url: '/games/wingo?min=60',
 }, {
   name: 'Win Go',
   sub: '3Min',
   img: '/img/win03.png',
-  url: '/games/wingo',
+  url: '/games/wingo?min=180',
 }, {
   name: 'Win Go',
   sub: '5Min',
   img: '/img/win05.png',
-  url: '/games/wingo',
+  url: '/games/wingo?min=300',
 }, {
   name: 'Bit Game',
   img: '/img/bit02.png',
