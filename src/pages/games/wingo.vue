@@ -114,16 +114,238 @@ const btn_disabled = ref(false)
         <v-col cols="4" justify="center">
           <v-btn color="#00E676" :disabled="btn_disabled" class="text-white" w-full>
             Join Green
+            <v-dialog
+              v-modal="windows" min-width="400px" transition="dialog-bottom-transition" persistent
+              activator="parent" width="auto"
+            >
+              <template #default="{ isActive }">
+                <v-card>
+                  <v-toolbar color="primary" title="Join Green" />
+                  <div class="px-16px">
+                    <p class="my-12px font-bold">
+                      Contract Money
+                    </p>
+                    <v-btn-toggle v-model="toggle" color="primary" elevation="2" mandatory rounded="0" height="20">
+                      <v-btn size="small">
+                        10
+                      </v-btn>
+                      <v-btn size="small">
+                        100
+                      </v-btn>
+                      <v-btn size="small">
+                        1000
+                      </v-btn>
+                      <v-btn size="small">
+                        10000
+                      </v-btn>
+                    </v-btn-toggle>
+
+                    <div>
+                      <p class="my-12px font-bold">
+                        Number
+                      </p>
+                      <div w-full flex justify="between" items-center>
+                        <v-btn class="h-full" variant="tonal" @click="number > 0 && number--">
+                          <v-icon>
+                            i-mdi-minus
+                          </v-icon>
+                        </v-btn>
+                        <p class="text-28px">
+                          {{ number }}
+                        </p>
+                        <v-btn class="h-full" variant="tonal" @click="number++">
+                          <v-icon>
+                            i-mdi-plus
+                          </v-icon>
+                        </v-btn>
+                      </div>
+                      <p class="my-12px font-bold">
+                        Total contract money is {{ total }}
+                      </p>
+                    </div>
+                    <div flex>
+                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                        <template #label>
+                          <p text-14px>
+                            I agree
+                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                              PRESALE RULE
+                            </span>
+                          </p>
+                        </template>
+                      </v-checkbox>
+                    </div>
+                  </div>
+
+                  <v-card-actions class="justify-end">
+                    <v-btn variant="text" @click="isActive.value = false">
+                      CANCEL
+                    </v-btn>
+                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                      CONFIRM
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
           </v-btn>
         </v-col>
         <v-col cols="4" justify="center">
           <v-btn color="#651FFF" :disabled="btn_disabled" class="text-white" w-full>
             Join Violet
+            <v-dialog
+              v-modal="windows" min-width="400px" transition="dialog-bottom-transition" persistent
+              activator="parent" width="auto"
+            >
+              <template #default="{ isActive }">
+                <v-card>
+                  <v-toolbar color="primary" title="Join Violet" />
+                  <div class="px-16px">
+                    <p class="my-12px font-bold">
+                      Contract Money
+                    </p>
+                    <v-btn-toggle v-model="toggle" color="primary" elevation="2" mandatory rounded="0" height="20">
+                      <v-btn size="small">
+                        10
+                      </v-btn>
+                      <v-btn size="small">
+                        100
+                      </v-btn>
+                      <v-btn size="small">
+                        1000
+                      </v-btn>
+                      <v-btn size="small">
+                        10000
+                      </v-btn>
+                    </v-btn-toggle>
+
+                    <div>
+                      <p class="my-12px font-bold">
+                        Number
+                      </p>
+                      <div w-full flex justify="between" items-center>
+                        <v-btn class="h-full" variant="tonal" @click="number > 0 && number--">
+                          <v-icon>
+                            i-mdi-minus
+                          </v-icon>
+                        </v-btn>
+                        <p class="text-28px">
+                          {{ number }}
+                        </p>
+                        <v-btn class="h-full" variant="tonal" @click="number++">
+                          <v-icon>
+                            i-mdi-plus
+                          </v-icon>
+                        </v-btn>
+                      </div>
+                      <p class="my-12px font-bold">
+                        Total contract money is {{ total }}
+                      </p>
+                    </div>
+                    <div flex>
+                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                        <template #label>
+                          <p text-14px>
+                            I agree
+                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                              PRESALE RULE
+                            </span>
+                          </p>
+                        </template>
+                      </v-checkbox>
+                    </div>
+                  </div>
+
+                  <v-card-actions class="justify-end">
+                    <v-btn variant="text" @click="isActive.value = false">
+                      CANCEL
+                    </v-btn>
+                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                      CONFIRM
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
           </v-btn>
         </v-col>
         <v-col cols="4" justify="center">
           <v-btn color="red" :disabled="btn_disabled" class="text-white" w-full>
             Join Red
+            <v-dialog
+              v-modal="windows" min-width="400px" transition="dialog-bottom-transition" persistent
+              activator="parent" width="auto"
+            >
+              <template #default="{ isActive }">
+                <v-card>
+                  <v-toolbar color="primary" title="Join Red" />
+                  <div class="px-16px">
+                    <p class="my-12px font-bold">
+                      Contract Money
+                    </p>
+                    <v-btn-toggle v-model="toggle" color="primary" elevation="2" mandatory rounded="0" height="20">
+                      <v-btn size="small">
+                        10
+                      </v-btn>
+                      <v-btn size="small">
+                        100
+                      </v-btn>
+                      <v-btn size="small">
+                        1000
+                      </v-btn>
+                      <v-btn size="small">
+                        10000
+                      </v-btn>
+                    </v-btn-toggle>
+
+                    <div>
+                      <p class="my-12px font-bold">
+                        Number
+                      </p>
+                      <div w-full flex justify="between" items-center>
+                        <v-btn class="h-full" variant="tonal" @click="number > 0 && number--">
+                          <v-icon>
+                            i-mdi-minus
+                          </v-icon>
+                        </v-btn>
+                        <p class="text-28px">
+                          {{ number }}
+                        </p>
+                        <v-btn class="h-full" variant="tonal" @click="number++">
+                          <v-icon>
+                            i-mdi-plus
+                          </v-icon>
+                        </v-btn>
+                      </div>
+                      <p class="my-12px font-bold">
+                        Total contract money is {{ total }}
+                      </p>
+                    </div>
+                    <div flex>
+                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                        <template #label>
+                          <p text-14px>
+                            I agree
+                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                              PRESALE RULE
+                            </span>
+                          </p>
+                        </template>
+                      </v-checkbox>
+                    </div>
+                  </div>
+
+                  <v-card-actions class="justify-end">
+                    <v-btn variant="text" @click="isActive.value = false">
+                      CANCEL
+                    </v-btn>
+                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                      CONFIRM
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
           </v-btn>
         </v-col>
       </v-row>
