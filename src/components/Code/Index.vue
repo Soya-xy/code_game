@@ -18,7 +18,7 @@ const games = [{
 }, {
   name: 'Bit Game',
   img: '/img/bit02.png',
-  url: '/games/wingo',
+  url: '/games/bitgame',
 }, {
   name: 'Aviator',
   img: '/img/fly01.png',

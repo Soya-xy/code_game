@@ -1,7 +1,9 @@
 <script setup lang='ts'>
 const router = useRouter()
 const { query }: any = useRoute()
-const tab = ref()
+const tab = ref('Parity')
+
+const recordTab = ref('Parity Record')
 const number = ref(1)
 const windows = ref(false)
 const items = ref([
@@ -10,10 +12,15 @@ const items = ref([
   'Bcone',
   'Emerd',
 ])
-const record = ref([
-  'Parity Record',
-  'My Parity Record',
+const record = computed(() => [
+  `${tab.value} Record`,
+  `My ${tab.value} Record`,
 ])
+
+watch(tab, async () => {
+  await nextTick()
+  recordTab.value = record.value[0]
+})
 
 const toggle = ref(0)
 const startTime = ref(new Date())
@@ -115,7 +122,7 @@ const btn_disabled = ref(false)
           <v-btn color="#00E676" :disabled="btn_disabled" class="text-white" w-full>
             Join Green
             <v-dialog
-              v-modal="windows" min-width="400px" transition="dialog-bottom-transition" persistent
+              v-modal="windows" min-width="325px" transition="dialog-bottom-transition" persistent
               activator="parent" width="auto"
             >
               <template #default="{ isActive }">
@@ -194,7 +201,7 @@ const btn_disabled = ref(false)
           <v-btn color="#651FFF" :disabled="btn_disabled" class="text-white" w-full>
             Join Violet
             <v-dialog
-              v-modal="windows" min-width="400px" transition="dialog-bottom-transition" persistent
+              v-modal="windows" min-width="325px" transition="dialog-bottom-transition" persistent
               activator="parent" width="auto"
             >
               <template #default="{ isActive }">
@@ -273,7 +280,7 @@ const btn_disabled = ref(false)
           <v-btn color="red" :disabled="btn_disabled" class="text-white" w-full>
             Join Red
             <v-dialog
-              v-modal="windows" min-width="400px" transition="dialog-bottom-transition" persistent
+              v-modal="windows" min-width="325px" transition="dialog-bottom-transition" persistent
               activator="parent" width="auto"
             >
               <template #default="{ isActive }">
@@ -350,100 +357,98 @@ const btn_disabled = ref(false)
         </v-col>
       </v-row>
       <div class="mt-4 flex flex-wrap items-center">
-        <v-row>
-          <v-col v-for="n in 10" :key="n">
-            <v-btn color="blue" class="w-full text-white" :disabled="btn_disabled" @click="openDialog">
-              {{ n }}
-              <!-- diaglog -->
-              <v-dialog
-                v-modal="windows" min-width="400px" transition="dialog-bottom-transition" persistent
-                activator="parent" width="auto"
-              >
-                <template #default="{ isActive }">
-                  <v-card>
-                    <v-toolbar color="primary" :title="`Select ${n}`" />
-                    <div class="px-16px">
+        <div flex flex-wrap items-center gap-3 justify="center" class="sm:justify-between">
+          <v-btn v-for="(n, i) in 10" :key="n" color="blue" class="min-w-[15%] text-white" :disabled="btn_disabled" @click="openDialog">
+            {{ i }}
+            <!-- diaglog -->
+            <v-dialog
+              v-modal="windows" min-width="325px" transition="dialog-bottom-transition" persistent
+              activator="parent" width="auto"
+            >
+              <template #default="{ isActive }">
+                <v-card>
+                  <v-toolbar color="primary" :title="`Select ${n}`" />
+                  <div class="px-16px">
+                    <p class="my-12px font-bold">
+                      Contract Money
+                    </p>
+                    <v-btn-toggle v-model="toggle" color="primary" elevation="2" mandatory rounded="0" height="20">
+                      <v-btn size="small">
+                        10
+                      </v-btn>
+                      <v-btn size="small">
+                        100
+                      </v-btn>
+                      <v-btn size="small">
+                        1000
+                      </v-btn>
+                      <v-btn size="small">
+                        10000
+                      </v-btn>
+                    </v-btn-toggle>
+
+                    <div>
                       <p class="my-12px font-bold">
-                        Contract Money
+                        Number
                       </p>
-                      <v-btn-toggle v-model="toggle" color="primary" elevation="2" mandatory rounded="0" height="20">
-                        <v-btn size="small">
-                          10
+                      <div w-full flex justify="between" items-center>
+                        <v-btn class="h-full" variant="tonal" @click="number > 0 && number--">
+                          <v-icon>
+                            i-mdi-minus
+                          </v-icon>
                         </v-btn>
-                        <v-btn size="small">
-                          100
-                        </v-btn>
-                        <v-btn size="small">
-                          1000
-                        </v-btn>
-                        <v-btn size="small">
-                          10000
-                        </v-btn>
-                      </v-btn-toggle>
-
-                      <div>
-                        <p class="my-12px font-bold">
-                          Number
+                        <p class="text-28px">
+                          {{ number }}
                         </p>
-                        <div w-full flex justify="between" items-center>
-                          <v-btn class="h-full" variant="tonal" @click="number > 0 && number--">
-                            <v-icon>
-                              i-mdi-minus
-                            </v-icon>
-                          </v-btn>
-                          <p class="text-28px">
-                            {{ number }}
-                          </p>
-                          <v-btn class="h-full" variant="tonal" @click="number++">
-                            <v-icon>
-                              i-mdi-plus
-                            </v-icon>
-                          </v-btn>
-                        </div>
-                        <p class="my-12px font-bold">
-                          Total contract money is {{ total }}
-                        </p>
+                        <v-btn class="h-full" variant="tonal" @click="number++">
+                          <v-icon>
+                            i-mdi-plus
+                          </v-icon>
+                        </v-btn>
                       </div>
-                      <div flex>
-                        <v-checkbox style="--v-medium-emphasis-opacity:1">
-                          <template #label>
-                            <p text-14px>
-                              I agree
-                              <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
-                                PRESALE RULE
-                              </span>
-                            </p>
-                          </template>
-                        </v-checkbox>
-                      </div>
+                      <p class="my-12px font-bold">
+                        Total contract money is {{ total }}
+                      </p>
                     </div>
+                    <div flex>
+                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                        <template #label>
+                          <p text-14px>
+                            I agree
+                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                              PRESALE RULE
+                            </span>
+                          </p>
+                        </template>
+                      </v-checkbox>
+                    </div>
+                  </div>
 
-                    <v-card-actions class="justify-end">
-                      <v-btn variant="text" @click="isActive.value = false">
-                        CANCEL
-                      </v-btn>
-                      <v-btn variant="text" color="primary" @click="isActive.value = false">
-                        CONFIRM
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </template>
-              </v-dialog>
-            </v-btn>
-          </v-col>
-        </v-row>
+                  <v-card-actions class="justify-end">
+                    <v-btn variant="text" @click="isActive.value = false">
+                      CANCEL
+                    </v-btn>
+                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                      CONFIRM
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
+          </v-btn>
+        </div>
       </div>
     </v-card>
 
     <!--  -->
     <v-card rounded="0" m8px p="[0px_8px_12px]">
       <div w-full>
-        <v-tabs v-model="tab" align-tabs="center" fixed-tabs bg-color="#fff" color="primary">
+        <v-tabs v-model="recordTab" align-tabs="center" fixed-tabs bg-color="#fff" color="primary">
           <v-tab v-for="item in record" :key="item" :value="item">
             {{ item }}
           </v-tab>
         </v-tabs>
-        <v-window v-model="tab">
+        <v-window v-model="recordTab">
           <v-window-item v-for="n in record" :key="n" :value="n">
             <v-data-table :items="itemsRecord">
               <template #bottom>

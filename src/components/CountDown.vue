@@ -25,7 +25,7 @@ function setNextTime() {
   const e = Date.parse(new Date().toString()) / 1e3
   const a = min - e % min
 
-  if (a <= (min < 180 ? 15 : 30)) {
+  if (a <= (min < 180 ? 10 : 30)) {
     guess_button_disabled.value = true
     emit('end')
   }

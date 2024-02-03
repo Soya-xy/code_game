@@ -19,6 +19,7 @@
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "dayjs": "^1.11.10",
+    "klinecharts": "^9.7.2",
     "less": "^4.2.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",

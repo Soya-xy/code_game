@@ -45,3 +45,36 @@ span {
   @apply bg-gray-300;
   /* color of the scroll thumb */
 }
+
+
+.text-btn-B {
+  background-color: #009A3F
+}
+
+.text-btn-S {
+  background-color: #E7162C
+}
+
+.text-btn-O {
+  background-color: #EEA901
+}
+
+.text-btn-E {
+  background-color: #2276E0
+}
+
+.text-btn-SE {
+  background-color: #DE3CAE
+}
+
+.text-btn-SO {
+  background-color: #01A89B
+}
+
+.text-btn-SE {
+  background-color: #FF7022
+}
+
+.text-btn-BO {
+  background-color: #A512F7
+}

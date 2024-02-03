@@ -32,6 +32,11 @@ export default defineConfig({
       provider: 'bunny',
     }),
   ],
+  theme: {
+    breakpoints: {
+      sm: '350px',
+    },
+  },
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),
