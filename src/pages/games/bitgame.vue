@@ -1,11 +1,13 @@
 <script setup lang='ts'>
+import type { Chart } from 'klinecharts'
 import { TooltipShowRule, dispose, init } from 'klinecharts'
+import type { Nullable } from 'vitest'
 
 const router = useRouter()
 const tab = ref('Parity')
 
 const recordTab = ref('Parity Record')
-const chart = shallowRef()
+const chart = shallowRef<Nullable<Chart>>()
 
 const items = ref([
   'BTC',
@@ -44,7 +46,7 @@ const btn = ref([
     color: '#01A89B',
   },
   {
-    title: 'SE',
+    title: 'BE',
     number: 1.95,
     color: '#FF7022',
   },
@@ -147,6 +149,10 @@ onMounted(() => {
 
   chart.value.createIndicator('MA', true, { id: 'candle_pane' })
   chart.value.createIndicator('BOLL', true, { id: 'candle_pane' })
+
+  chart.value.setZoomEnabled(false)
+  chart.value.setOffsetRightDistance(10)
+  chart.value.setScrollEnabled(false)
 })
 
 const toggle = ref(0)

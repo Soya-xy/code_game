@@ -1,0 +1,230 @@
+{
+  "animations": {
+    "fires": [
+      "fires_01.png",
+      "fires_02.png",
+      "fires_03.png",
+      "fires_04.png",
+      "fires_05.png",
+      "fires_06.png",
+      "fires_07.png",
+      "fires_08.png",
+      "fires_09.png",
+      "fires_10.png"
+    ]
+  },
+  "frames": {
+    "fires_01.png": {
+      "frame": {
+        "h": 93,
+        "w": 70,
+        "x": 1,
+        "y": 1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 93,
+        "w": 70,
+        "x": 17,
+        "y": 2
+      },
+      "trimmed": true
+    },
+    "fires_02.png": {
+      "frame": {
+        "h": 88,
+        "w": 70,
+        "x": 1,
+        "y": 191
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 88,
+        "w": 70,
+        "x": 17,
+        "y": 1
+      },
+      "trimmed": true
+    },
+    "fires_03.png": {
+      "frame": {
+        "h": 82,
+        "w": 70,
+        "x": 1,
+        "y": 461
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 105
+      },
+      "spriteSourceSize": {
+        "h": 82,
+        "w": 70,
+        "x": 18,
+        "y": 1
+      },
+      "trimmed": true
+    },
+    "fires_04.png": {
+      "frame": {
+        "h": 82,
+        "w": 70,
+        "x": 1,
+        "y": 545
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 103
+      },
+      "spriteSourceSize": {
+        "h": 82,
+        "w": 70,
+        "x": 17,
+        "y": 1
+      },
+      "trimmed": true
+    },
+    "fires_05.png": {
+      "frame": {
+        "h": 88,
+        "w": 70,
+        "x": 1,
+        "y": 281
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 88,
+        "w": 70,
+        "x": 18,
+        "y": 1
+      },
+      "trimmed": true
+    },
+    "fires_06.png": {
+      "frame": {
+        "h": 93,
+        "w": 70,
+        "x": 1,
+        "y": 96
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 93,
+        "w": 70,
+        "x": 18,
+        "y": 2
+      },
+      "trimmed": true
+    },
+    "fires_07.png": {
+      "frame": {
+        "h": 88,
+        "w": 70,
+        "x": 1,
+        "y": 371
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 88,
+        "w": 70,
+        "x": 18,
+        "y": 1
+      },
+      "trimmed": true
+    },
+    "fires_08.png": {
+      "frame": {
+        "h": 82,
+        "w": 70,
+        "x": 1,
+        "y": 629
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 82,
+        "w": 70,
+        "x": 18,
+        "y": 1
+      },
+      "trimmed": true
+    },
+    "fires_09.png": {
+      "frame": {
+        "h": 82,
+        "w": 70,
+        "x": 1,
+        "y": 713
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 82,
+        "w": 70,
+        "x": 19,
+        "y": 1
+      },
+      "trimmed": true
+    },
+    "fires_10.png": {
+      "frame": {
+        "h": 82,
+        "w": 70,
+        "x": 1,
+        "y": 797
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 82,
+        "w": 70,
+        "x": 19,
+        "y": 1
+      },
+      "trimmed": true
+    }
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "format": "RGBA8888",
+    "image": "fires.png",
+    "scale": 1,
+    "size": {
+      "h": 880,
+      "w": 72
+    },
+    "smartupdate": "$TexturePacker:SmartUpdate:2dbd7b41f5a27a049b6594127826071a:8f4b67e255e919e11952ab257e67b802:efdab459941dbf36af46aa246ef5e44b$",
+    "version": "1.0"
+  }
+}

@@ -26,7 +26,7 @@ const games = [{
 }, {
   name: 'Mines',
   img: '/img/roc01.png',
-  url: '/games/wingo',
+  url: '/games/crash',
 }]
 </script>
 

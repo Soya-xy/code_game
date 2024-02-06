@@ -10,6 +10,7 @@ declare module 'vue' {
     Code: typeof import('./components/Code/Index.vue')['default']
     CodeSwiper: typeof import('./components/Code/Swiper.vue')['default']
     CountDown: typeof import('./components/CountDown.vue')['default']
+    Fly: typeof import('./components/Fly.vue')['default']
     Lang: typeof import('./components/lang.vue')['default']
     NoticeBar: typeof import('./components/NoticeBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
