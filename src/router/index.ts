@@ -7,9 +7,19 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: setupLayouts(pages),
 })
+
 router.beforeEach((to, from) => {
   if (to.path !== from.path)
     NProgress.start()
+  // const token = localStorage.getItem('token')
+  // if (!token
+  //   // ❗️ 避免无限重定向
+  //   && to.path !== '/login'
+  // ) {
+  //   return {
+  //     path: '/login',
+  //   }
+  // }
 })
 router.afterEach(() => {
   NProgress.done()

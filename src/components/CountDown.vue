@@ -2,7 +2,7 @@
 const { min = 180 } = defineProps<{
   min: number
 }>()
-const emit = defineEmits(['start', 'end'])
+const emit = defineEmits(['start', 'end', 'stop'])
 const continue_button_show = ref(true)
 const continue_button_disabled = ref(false)
 const guess_button_disabled = ref(false)
@@ -27,8 +27,11 @@ function setNextTime() {
 
   if (a <= (min < 180 ? 10 : 30)) {
     guess_button_disabled.value = true
-    emit('end')
+    emit('stop')
   }
+
+  if (a <= 1)
+    emit('end')
 
   const i = a / 60
   const o = a % 60
@@ -41,7 +44,6 @@ function setNextTime() {
   if (a === min) {
     continue_button_show.value = false
     continue_button_disabled.value = true
-
     setTimeout(() => {
       continue_button_disabled.value = false
     }, 2500)

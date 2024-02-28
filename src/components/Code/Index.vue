@@ -22,7 +22,7 @@ const games = [{
 }, {
   name: 'Aviator',
   img: '/img/fly01.png',
-  url: '/games/wingo',
+  url: '/games/limbo',
 }, {
   name: 'Mines',
   img: '/img/roc01.png',

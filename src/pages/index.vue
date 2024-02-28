@@ -7,10 +7,16 @@ import Lang from '~/components/lang.vue'
 const { t: $t } = useI18n()
 
 const tab = ref()
+const noticeList = ref<any>([])
 const items = ref([
   $t('CODE GAMES'),
   'PG GAMES',
 ])
+
+findNotice().then((res) => {
+  if (res.res !== 0)
+    noticeList.value = res.obj
+})
 </script>
 
 <template>
@@ -39,7 +45,7 @@ const items = ref([
         <div v-if="index === 0" class="h-[calc(100vh-110px)] overflow-y-scroll bg-[#FAFAFA] pb-24">
           <Swiper />
           <NoticeBarVue
-            text="Welcome to Woner to keep the game exciting!" background="#E4E0EC"
+            :text="noticeList?.[0]?.message" background="#E4E0EC"
             left-icon="i-mdi-bell text-[#5713D4]"
           />
           <Code />

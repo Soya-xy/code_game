@@ -52,7 +52,16 @@ export default defineConfig({
         'vue/macros',
         '@vueuse/core',
         'pinia',
-        { '@arco-design/web-vue': ['Message', 'Modal'] },
+        {
+          'vue-toastification': [
+            'useToast',
+          ],
+        },
+        {
+          'vue-i18n': [
+            'useI18n',
+          ],
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
@@ -93,6 +102,13 @@ export default defineConfig({
   ],
   server: {
     host: '0.0.0.0',
+    proxy: {
+      '/api': {
+        target: 'https://reliancemall.co/lottery-backend/glserver/',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ''),
+      },
+    },
   },
   css: {
     postcss: {

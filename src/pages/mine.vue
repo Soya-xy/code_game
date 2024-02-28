@@ -2,6 +2,17 @@
 // const money = ref(0)
 // const tab = ref(1)
 const router = useRouter()
+const user = ref<any>()
+
+userInfo().then((res) => {
+  if (res.res !== 0)
+    user.value = res.obj
+})
+const promotoId = useStorage('promotoId', '')
+console.log('🚀 ~ promotoId:', promotoId)
+const mobile = useStorage('mobile', '')
+if (!promotoId.value)
+  router.replace('/login')
 </script>
 
 <template>
@@ -18,7 +29,7 @@ const router = useRouter()
     <v-app-bar elevation="3" color="#5713d4" :height="56">
       <v-app-bar-title>Mine</v-app-bar-title>
       <template #append>
-        <p>₹ 0.00</p>
+        <p>₹ {{ user?.money }}</p>
         <v-btn icon="i-mdi-credit-card-check-outline " />
         <v-btn icon="i-mdi-bell" />
       </template>
@@ -28,12 +39,12 @@ const router = useRouter()
       <v-container fluid bg="#FAFAFA" class="min-h-[calc(100vh-162px)] p2">
         <v-card rounded="0" p3 py4 :elevation="3">
           <div text="14px" font-bold>
-            <p>ID: <span>345789</span></p>
+            <p>ID: <span>{{ promotoId }}</span></p>
             <p my-2>
-              Mobile: <span>345789</span>
+              Mobile: <span>{{ mobile }}</span>
             </p>
             <p>
-              Nick Name: <v-btn variant="text" color="#1565C0">
+              Nick Name: {{ user?.nickname }}<v-btn variant="text" color="#1565C0">
                 CHANGE
               </v-btn>
             </p>
@@ -58,10 +69,7 @@ const router = useRouter()
           <v-list border>
             <v-list-group value="Users" collapse-icon="i-mdi-menu-up" expand-icon="i-mdi-menu-down">
               <template #activator="{ props }">
-                <v-list-item
-                  v-bind="props" prepend-icon="i-mdi-security" title="Account Security"
-                  color="#5713d4"
-                />
+                <v-list-item v-bind="props" prepend-icon="i-mdi-security" title="Account Security" color="#5713d4" />
               </template>
 
               <v-list-item title="Reset Password" link />

@@ -3,9 +3,10 @@ import router from '~/router'
 
 type Method = 'post' | 'get' | 'put' | 'delete' | 'patch' | 'head'
 type Ajax = Record<Method, (url: string, data?: any, options?: any) => Promise<any>>
-
-export const baseApi = 'http://127.0.0.1:8081/api/v1'
+const toast = useToast()
+export const baseApi = 'https://reliancemall.in/lottery-backend/glserver'
 // export const baseApi = 'http://127.0.0.1:8081/api/v1'
+// export const baseApi = '/api'
 
 export interface APIResponse {
   data: any
@@ -33,8 +34,9 @@ service.interceptors.request.use(
     // 设置请求头
     if (localStorage.getItem('TOKEN')) {
       // loading
-      config.headers.Authorization = `bearer ${localStorage.getItem('TOKEN')}`
+      config.headers.Authorization = `${localStorage.getItem('TOKEN')}`
     }
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 
     return config
   },
@@ -49,17 +51,17 @@ service.interceptors.response.use(
     if (response.config.responseType === 'blob') {
       const type = response.data.type
       if (type === 'application/json') {
-        Message.error('下载失败')
+        // Message.error('下载失败')
         const data = JSON.parse(await response.data.text())
         return Promise.reject(data.msg)
       }
     }
     const res = response.data
-    if (res.code !== 0) {
-      // // 登录超时,重新登录
+    if (res.res === 0) {
+      toast.error(res.resMsg)
       return Promise.reject(res || 'error')
     }
-    if (res.status === 401 || res.code === 401) {
+    if (res?.status === 401 || res?.res === 401) {
       // // 登录超时,重新登录
       router.replace('/login')
       return Promise.resolve(res)
@@ -70,7 +72,7 @@ service.interceptors.response.use(
   },
   (error) => {
     const res = error.response
-    if (res.status === 401) {
+    if (res?.status === 401) {
       setTimeout(() => {
         localStorage.clear()
         location.href = '/'

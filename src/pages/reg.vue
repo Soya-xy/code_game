@@ -1,17 +1,29 @@
 <script setup lang='ts'>
+import { ref } from "vue"
 const router = useRouter()
 const opting = ref(false)
+const mobile = ref('')
 const min = ref(60)
-function sendOpt() {
-  opting.value = true
-  const timer = setInterval(() => {
-    min.value--
-    if (min.value < 0) {
-      clearInterval(timer)
-      opting.value = false
-      min.value = 60
-    }
-  }, 1000)
+const password = ref<string>('')
+async function sendOpt() {
+  const res = await sendSMS({
+    mobile: `+91${mobile.value}`,
+  })
+  if (res) {
+    opting.value = true
+    const timer = setInterval(() => {
+      min.value--
+      if (min.value < 0) {
+        clearInterval(timer)
+        opting.value = false
+        min.value = 60
+      }
+    }, 1000)
+  }
+}
+
+function reg() {
+  console.log(123)
 }
 </script>
 
@@ -24,16 +36,17 @@ function sendOpt() {
 
     <v-main>
       <v-container fluid bg="#FAFAFA" class="min-h-[calc(100vh-64px)]">
-        <v-sheet width="400" color="#FAFAFA" class="mx-auto mt-10">
+        <v-sheet color="#FAFAFA" class="mx-auto mt-10">
           <v-text-field
-            prefix="+91" density="compact" placeholder="Mobile Number" prepend-inner-icon="i-mdi-cellphone"
-            variant="solo" :rules="[value => !!value || 'Mobile Number is required']"
+            v-model="mobile" prefix="+91" density="compact" placeholder="Mobile Number"
+            prepend-inner-icon="i-mdi-cellphone" variant="solo" :rules="[value => !!value || 'Mobile Number is required']"
           />
 
           <div flex items-center justify="between">
             <v-text-field
               :rules="[value => !!value || 'Password is required']" density="compact"
               placeholder="Enter your password" prepend-inner-icon="i-mdi-message-processing" variant="solo"
+              v-model="password"
             />
             <v-btn class="mb-6 ml-4" variant="elevated" width="100" size="large" :disabled="opting" @click="sendOpt">
               {{ opting ? `WAIT ${min}S` : 'OPT' }}
@@ -49,7 +62,7 @@ function sendOpt() {
           />
 
           <div w-full flex justify="center">
-            <v-btn class="mx-auto mb-8 mt-5" color="#0288d1" width="250" size="large" variant="elevated">
+            <v-btn class="mx-auto mb-8 mt-5" color="#0288d1" width="250" size="large" variant="elevated" @click="reg">
               Register
             </v-btn>
           </div>

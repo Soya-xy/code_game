@@ -1,8 +1,10 @@
 <script setup lang='ts'>
+import { ref } from 'vue'
+
 const router = useRouter()
 const { query }: any = useRoute()
 const tab = ref('Parity')
-
+const { user } = useUserStore()
 const recordTab = ref('Parity Record')
 const number = ref(1)
 const windows = ref(false)
@@ -12,15 +14,11 @@ const items = ref([
   'Bcone',
   'Emerd',
 ])
+const gameType = ref(1)
 const record = computed(() => [
   `${tab.value} Record`,
   `My ${tab.value} Record`,
 ])
-
-watch(tab, async () => {
-  await nextTick()
-  recordTab.value = record.value[0]
-})
 
 const toggle = ref(0)
 const startTime = ref(new Date())
@@ -36,41 +34,92 @@ function setNextTime() {
     setNextTime()
   }, 1000 * 60 * 3)
 }
+const headers = [{
+  key: 'period',
+  title: 'Period',
+}, {
+  key: 'price',
+  title: 'Price',
+}, {
+  key: 'resultNum',
+  title: 'Number',
+}, {
+  key: 'result',
+  title: 'Result',
+}]
+const itemsRecord = ref<any>([])
+
+const pageNum = ref(1)
+const agree = ref<boolean>(false)
 onMounted(() => {
   setNextTime()
+  getData()
 })
+
+watch(tab, async () => {
+  await nextTick()
+  recordTab.value = record.value[0]
+  gameType.value = items.value.indexOf(tab.value) + 1
+  getData()
+})
+
+const periodId = ref('')
+function getData() {
+  getPeriod({
+    gameType: gameType.value,
+  }).then((res) => {
+    if (res.res !== 0)
+      periodId.value = res.obj.period
+  })
+
+  findGameLogByPage({
+    gameType: gameType.value,
+    pageSize: 10,
+    pageNum: pageNum.value,
+  }).then((res) => {
+    if (res.res !== 0)
+      itemsRecord.value = res.obj.results
+  })
+}
+
+const btn_disabled = ref(false)
+
+function endGame(status: boolean) {
+  if (!status)
+    btn_disabled.value = status
+  getData()
+}
 
 function openDialog() {
   windows.value = true
 }
-const itemsRecord = ref([
-  {
-    name: 'African Elephant',
-    species: 'Loxodonta africana',
-    diet: 'Herbivore',
-    habitat: 'Savanna, Forests',
-  },
-  {
-    name: 'African Elephant',
-    species: 'Loxodonta africana',
-    diet: 'Herbivore',
-    habitat: 'Savanna, Forests',
-  },
-  {
-    name: 'African Elephant',
-    species: 'Loxodonta africana',
-    diet: 'Herbivore',
-    habitat: 'Savanna, Forests',
-  },
-  {
-    name: 'African Elephant',
-    species: 'Loxodonta africana',
-    diet: 'Herbivore',
-    habitat: 'Savanna, Forests',
-  },
-])
 
-const btn_disabled = ref(false)
+function stopGame() {
+  btn_disabled.value = true
+
+  windows.value = false
+}
+const moneyList = [10, 100, 1000, 10000]
+const toast = useToast()
+async function pourGame(pourType: string) {
+  if (!agree.value) {
+    toast.error('Please agree to the presale rule')
+    return
+  }
+
+  const res: any = pour({
+    gameType: gameType.value,
+    pourType,
+    pourCount: number.value,
+    pourMoney: moneyList[toggle.value],
+  })
+  if (res.res !== 0) {
+    getData()
+    agree.value = false
+    number.value = 1
+    toggle.value = 0
+  }
+}
 </script>
 
 <template>
@@ -79,7 +128,7 @@ const btn_disabled = ref(false)
       <v-btn icon="i-mdi-arrow-left" @click="router.back()" />
       <v-app-bar-title>Win Go</v-app-bar-title>
       <template #append>
-        <p>₹ 0.00</p>
+        <p>₹ {{ user?.money }}</p>
         <v-btn icon="i-mdi-wallet" />
 
         <v-btn icon="i-mdi-help-circle" />
@@ -107,10 +156,13 @@ const btn_disabled = ref(false)
       </div>
       <div flex justify="between" items-center>
         <div class="mx12px flex items-center text-22px font-bold tracking-widest">
-          20240131377
+          {{ periodId }}
         </div>
         <div class="mx12px text-18px font-bold">
-          <count-down :date="nextTime" :min="Number(query.min)" @start="btn_disabled = false " @end="btn_disabled = true" />
+          <count-down
+            :date="nextTime" :min="Number(query.min)" @start="endGame(false)" @end="endGame(true)"
+            @stop="stopGame"
+          />
         </div>
       </div>
     </v-card>
@@ -171,11 +223,12 @@ const btn_disabled = ref(false)
                       </p>
                     </div>
                     <div flex>
-                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                      <v-checkbox v-model="agree" style="--v-medium-emphasis-opacity:1">
                         <template #label>
                           <p text-14px>
                             I agree
-                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                            <span text="#0288d1 14px" class="font-bold">
+                              <!-- <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++"> -->
                               PRESALE RULE
                             </span>
                           </p>
@@ -188,7 +241,7 @@ const btn_disabled = ref(false)
                     <v-btn variant="text" @click="isActive.value = false">
                       CANCEL
                     </v-btn>
-                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                    <v-btn variant="text" color="primary" @click="pourGame('green'), isActive.value = false">
                       CONFIRM
                     </v-btn>
                   </v-card-actions>
@@ -250,11 +303,11 @@ const btn_disabled = ref(false)
                       </p>
                     </div>
                     <div flex>
-                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                      <v-checkbox v-model="agree" style="--v-medium-emphasis-opacity:1">
                         <template #label>
                           <p text-14px>
                             I agree
-                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                            <span text="#0288d1 14px" class="font-bold">
                               PRESALE RULE
                             </span>
                           </p>
@@ -267,7 +320,7 @@ const btn_disabled = ref(false)
                     <v-btn variant="text" @click="isActive.value = false">
                       CANCEL
                     </v-btn>
-                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                    <v-btn variant="text" color="primary" @click="pourGame('violet'), isActive.value = false">
                       CONFIRM
                     </v-btn>
                   </v-card-actions>
@@ -329,11 +382,11 @@ const btn_disabled = ref(false)
                       </p>
                     </div>
                     <div flex>
-                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                      <v-checkbox v-model="agree" style="--v-medium-emphasis-opacity:1">
                         <template #label>
                           <p text-14px>
                             I agree
-                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                            <span text="#0288d1 14px" class="font-bold">
                               PRESALE RULE
                             </span>
                           </p>
@@ -346,7 +399,7 @@ const btn_disabled = ref(false)
                     <v-btn variant="text" @click="isActive.value = false">
                       CANCEL
                     </v-btn>
-                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                    <v-btn variant="text" color="primary" @click="pourGame('red'), isActive.value = false">
                       CONFIRM
                     </v-btn>
                   </v-card-actions>
@@ -358,7 +411,10 @@ const btn_disabled = ref(false)
       </v-row>
       <div class="mt-4 flex flex-wrap items-center">
         <div flex flex-wrap items-center gap-3 justify="center" class="sm:justify-between">
-          <v-btn v-for="(n, i) in 10" :key="n" color="blue" class="min-w-[15%] text-white" :disabled="btn_disabled" @click="openDialog">
+          <v-btn
+            v-for="(n, i) in 10" :key="n" color="blue" class="min-w-[15%] text-white" :disabled="btn_disabled"
+            @click="openDialog"
+          >
             {{ i }}
             <!-- diaglog -->
             <v-dialog
@@ -411,11 +467,11 @@ const btn_disabled = ref(false)
                       </p>
                     </div>
                     <div flex>
-                      <v-checkbox style="--v-medium-emphasis-opacity:1">
+                      <v-checkbox v-model="agree" style="--v-medium-emphasis-opacity:1">
                         <template #label>
                           <p text-14px>
                             I agree
-                            <span text="#0288d1 14px" class="font-bold" @click.stop.prevent="number++">
+                            <span text="#0288d1 14px" class="font-bold">
                               PRESALE RULE
                             </span>
                           </p>
@@ -428,7 +484,7 @@ const btn_disabled = ref(false)
                     <v-btn variant="text" @click="isActive.value = false">
                       CANCEL
                     </v-btn>
-                    <v-btn variant="text" color="primary" @click="isActive.value = false">
+                    <v-btn variant="text" color="primary" @click="pourGame(n), isActive.value = false">
                       CONFIRM
                     </v-btn>
                   </v-card-actions>
@@ -450,9 +506,21 @@ const btn_disabled = ref(false)
         </v-tabs>
         <v-window v-model="recordTab">
           <v-window-item v-for="n in record" :key="n" :value="n">
-            <v-data-table :items="itemsRecord">
+            <v-data-table :items="itemsRecord" :headers="headers">
               <template #bottom>
                 <v-pagination :length="10" variant="plain" size="small" class="custom-page" />
+              </template>
+
+              <!-- eslint-disable-next-line vue/valid-v-slot -->
+              <template #item.result="{ item }">
+                {{ item }}
+                <div
+                  v-for="v in item.result.join(',')" :key="v" :style="`margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    background:${v}
+    `"
+                />
               </template>
             </v-data-table>
           </v-window-item>

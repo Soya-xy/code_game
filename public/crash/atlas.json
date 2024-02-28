@@ -1,0 +1,419 @@
+{
+  "animations": {
+    "airplane": [
+      "airplane1.png",
+      "airplane2.png"
+    ],
+    "comet": [
+      "comet1.png",
+      "comet2.png",
+      "comet3.png",
+      "comet4.png"
+    ],
+    "sat": [
+      "sat1.png",
+      "sat2.png",
+      "sat3.png",
+      "sat4.png"
+    ],
+    "snow": [
+      "snow1.png",
+      "snow2.png",
+      "snow3.png"
+    ]
+  },
+  "frames": {
+    "airplane1.png": {
+      "frame": {
+        "h": 43,
+        "w": 163,
+        "x": 215,
+        "y": 487
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 43,
+        "w": 163
+      },
+      "spriteSourceSize": {
+        "h": 43,
+        "w": 163,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "airplane2.png": {
+      "frame": {
+        "h": 82,
+        "w": 117,
+        "x": 163,
+        "y": 396
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 82,
+        "w": 117
+      },
+      "spriteSourceSize": {
+        "h": 82,
+        "w": 117,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "alien.png": {
+      "frame": {
+        "h": 81,
+        "w": 104,
+        "x": 375,
+        "y": 88
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 81,
+        "w": 104
+      },
+      "spriteSourceSize": {
+        "h": 81,
+        "w": 104,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "aurora.png": {
+      "frame": {
+        "h": 214,
+        "w": 333,
+        "x": 40,
+        "y": 1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 214,
+        "w": 333
+      },
+      "spriteSourceSize": {
+        "h": 214,
+        "w": 333,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "blackhole.png": {
+      "frame": {
+        "h": 187,
+        "w": 177,
+        "x": 163,
+        "y": 217
+      },
+      "rotated": true,
+      "sourceSize": {
+        "h": 187,
+        "w": 177
+      },
+      "spriteSourceSize": {
+        "h": 187,
+        "w": 177,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "comet1.png": {
+      "frame": {
+        "h": 39,
+        "w": 310,
+        "x": 81,
+        "y": 217
+      },
+      "rotated": true,
+      "sourceSize": {
+        "h": 39,
+        "w": 310
+      },
+      "spriteSourceSize": {
+        "h": 39,
+        "w": 310,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "comet2.png": {
+      "frame": {
+        "h": 37,
+        "w": 506,
+        "x": 1,
+        "y": 1
+      },
+      "rotated": true,
+      "sourceSize": {
+        "h": 37,
+        "w": 506
+      },
+      "spriteSourceSize": {
+        "h": 37,
+        "w": 506,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "comet3.png": {
+      "frame": {
+        "h": 39,
+        "w": 302,
+        "x": 122,
+        "y": 217
+      },
+      "rotated": true,
+      "sourceSize": {
+        "h": 39,
+        "w": 302
+      },
+      "spriteSourceSize": {
+        "h": 39,
+        "w": 302,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "comet4.png": {
+      "frame": {
+        "h": 39,
+        "w": 316,
+        "x": 40,
+        "y": 217
+      },
+      "rotated": true,
+      "sourceSize": {
+        "h": 39,
+        "w": 316
+      },
+      "spriteSourceSize": {
+        "h": 39,
+        "w": 316,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "dust.png": {
+      "frame": {
+        "h": 10,
+        "w": 10,
+        "x": 1,
+        "y": 523
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 10,
+        "w": 10
+      },
+      "spriteSourceSize": {
+        "h": 10,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "moon.png": {
+      "frame": {
+        "h": 125,
+        "w": 125,
+        "x": 352,
+        "y": 250
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 125,
+        "w": 125
+      },
+      "spriteSourceSize": {
+        "h": 125,
+        "w": 125,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "sat1.png": {
+      "frame": {
+        "h": 50,
+        "w": 46,
+        "x": 163,
+        "y": 487
+      },
+      "rotated": true,
+      "sourceSize": {
+        "h": 50,
+        "w": 46
+      },
+      "spriteSourceSize": {
+        "h": 50,
+        "w": 46,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "sat2.png": {
+      "frame": {
+        "h": 77,
+        "w": 89,
+        "x": 375,
+        "y": 171
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 77,
+        "w": 89
+      },
+      "spriteSourceSize": {
+        "h": 77,
+        "w": 89,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "sat3.png": {
+      "frame": {
+        "h": 107,
+        "w": 85,
+        "x": 375,
+        "y": 1
+      },
+      "rotated": true,
+      "sourceSize": {
+        "h": 107,
+        "w": 85
+      },
+      "spriteSourceSize": {
+        "h": 107,
+        "w": 85,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "sat4.png": {
+      "frame": {
+        "h": 108,
+        "w": 117,
+        "x": 352,
+        "y": 377
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 108,
+        "w": 117
+      },
+      "spriteSourceSize": {
+        "h": 108,
+        "w": 117,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "snow1.png": {
+      "frame": {
+        "h": 10,
+        "w": 10,
+        "x": 13,
+        "y": 523
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 10,
+        "w": 10
+      },
+      "spriteSourceSize": {
+        "h": 10,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "snow2.png": {
+      "frame": {
+        "h": 10,
+        "w": 9,
+        "x": 25,
+        "y": 522
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 10,
+        "w": 9
+      },
+      "spriteSourceSize": {
+        "h": 10,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "snow3.png": {
+      "frame": {
+        "h": 11,
+        "w": 9,
+        "x": 15,
+        "y": 509
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 11,
+        "w": 9
+      },
+      "spriteSourceSize": {
+        "h": 11,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "star.png": {
+      "frame": {
+        "h": 12,
+        "w": 12,
+        "x": 1,
+        "y": 509
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 12,
+        "w": 12
+      },
+      "spriteSourceSize": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "format": "RGBA8888",
+    "image": "atlas.png",
+    "scale": "0.5",
+    "size": {
+      "h": 534,
+      "w": 483
+    },
+    "smartupdate": "$TexturePacker:SmartUpdate:be35ed27bc9460bed13ce3789ad16800:2bde6a3e32ce8f9422c87353b745ac94:cbce6b53f0f49e0bf15173c25c41f876$",
+    "version": "1.0"
+  }
+}
