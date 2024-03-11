@@ -38,7 +38,7 @@ const headers = [{
   key: 'period',
   title: 'Period',
 }, {
-  key: 'price',
+  key: 'resultPrice',
   title: 'Price',
 }, {
   key: 'resultNum',
@@ -101,7 +101,7 @@ function stopGame() {
 }
 const moneyList = [10, 100, 1000, 10000]
 const toast = useToast()
-async function pourGame(pourType: string) {
+async function pourGame(pourType: any) {
   if (!agree.value) {
     toast.error('Please agree to the presale rule')
     return
@@ -512,15 +512,16 @@ async function pourGame(pourType: string) {
               </template>
 
               <!-- eslint-disable-next-line vue/valid-v-slot -->
-              <template #item.result="{ item }">
-                {{ item }}
-                <div
-                  v-for="v in item.result.join(',')" :key="v" :style="`margin-right: 5px;
+              <template #item.result="{ item: { result } }:any">
+                <div flex gap-1>
+                  <div
+                    v-for="v in (result.split(','))" :key="v" :style="`margin-right: 5px;
     width: 15px;
     height: 15px;
     background:${v}
     `"
-                />
+                  />
+                </div>
               </template>
             </v-data-table>
           </v-window-item>

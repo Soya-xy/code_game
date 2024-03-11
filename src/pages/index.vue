@@ -13,7 +13,7 @@ const items = ref([
   'PG GAMES',
 ])
 
-findNotice().then((res) => {
+findNotice().then((res: any) => {
   if (res.res !== 0)
     noticeList.value = res.obj
 })

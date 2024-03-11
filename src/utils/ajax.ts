@@ -1,45 +1,121 @@
-import { createAlova } from 'alova'
-import GlobalFetch from 'alova/GlobalFetch'
-import VueHook from 'alova/vue'
-import { axiosRequestAdapter } from '@alova/adapter-axios'
+import axios from 'axios'
+import router from '~/router'
 
-// import { createDiscreteApi } from 'naive-ui'
-// import router from '~/modules/router'
-//
-const baseURL = '/lottery-backend/api'
+type Method = 'post' | 'get' | 'put' | 'delete' | 'patch' | 'head'
+type Ajax = Record<Method, (url: string, data?: any, options?: any) => Promise<any>>
+const toast = useToast()
+// export const baseApi = 'https://reliancemall.in/lottery-backend/glserver'
+// export const baseApi = 'http://127.0.0.1:8081/api/v1'
+export const baseApi = import.meta.env.MODE === 'development' ? '/lottery-backend/api' : 'https://reliancemall.in/lottery-backend/glserver'
 
-// const token = localStorage.getItem('token')
-// const { message } = createDiscreteApi(['message'])
-
-export function alovaInstance(base = baseURL) {
-  return createAlova({
-    baseURL: `${base}`,
-    statesHook: VueHook,
-    requestAdapter: GlobalFetch(),
-    beforeRequest({ config }) {
-      // config.headers.Authorization = `Bearer ${token}`
-      config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-    },
-    responded: {
-      onSuccess: async (response) => {
-        // if (response.status === 401) {
-        //   if (token)
-        //     message.error('登录过期，请重新登录')
-        //   setTimeout(() => {
-        //     router.replace('/login')
-        //   }, 1500)
-        //   return
-        // }
-        const json = await response.json()
-        return json
-      },
-    },
-  })
+export interface APIResponse {
+  data: any
+  message: string
+  status: boolean
 }
 
-// upload alova instance
-export const uploadAlova = createAlova({
-  baseURL,
-  statesHook: VueHook,
-  requestAdapter: axiosRequestAdapter(),
+// create an axios instance
+const service = axios.create({
+  baseURL: `${baseApi}`, // url = base api url + request url
+  withCredentials: true, // send cookies when cross-domain requests
+  timeout: 15000, // request timeout
+
 })
+
+// request拦截器 request interceptor
+service.interceptors.request.use(
+  (config) => {
+    // 不传递默认开启loading
+    // if (!config.hideloading) {
+    //   // loading
+    //   Toast.loading({
+    //     forbidClick: true,
+    //   });
+    // }
+    // 设置请求头
+    if (localStorage.getItem('TOKEN')) {
+      // loading
+      config.headers.Authorization = `${localStorage.getItem('TOKEN')}`
+    }
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+
+    return config
+  },
+  (error) => {
+    // do something with request error
+    return Promise.reject(error)
+  },
+)
+// respone拦截器
+service.interceptors.response.use(
+  async (response) => {
+    if (response.config.responseType === 'blob') {
+      const type = response.data.type
+      if (type === 'application/json') {
+        // Message.error('下载失败')
+        const data = JSON.parse(await response.data.text())
+        return Promise.reject(data.msg)
+      }
+    }
+    const res = response.data
+    if (res.res === 0) {
+      toast.error(res.resMsg)
+      return Promise.reject(res || 'error')
+    }
+    if (res?.status === 401 || res?.res === 401) {
+      // // 登录超时,重新登录
+      // router.replace('/login')
+      return Promise.resolve(res)
+    }
+    else {
+      return Promise.resolve(res)
+    }
+  },
+  (error) => {
+    const res = error.response
+    if (res?.status === 401) {
+      setTimeout(() => {
+        localStorage.clear()
+        router.push('/login')
+      }, 1500)
+    }
+    else {
+      return Promise.reject(error)
+    }
+  },
+)
+
+/**
+ * http 请求基础类
+ * 参考文档 https://www.kancloud.cn/yunye/axios/234845
+ *
+ */
+const Api: Ajax = {} as Ajax
+['post', 'put', 'patch'].reduce((request, method) => {
+  /**
+   *
+   * @param url string 接口地址
+   * @param data object get参数
+   * @param options object axios 配置项
+   * @returns {AxiosPromise}
+   */
+  Api[method as Method] = (url = '', data = {}, options = {}) => {
+    return service(Object.assign({ url, data, method }, options))
+  }
+  return request
+}, {});
+
+['get', 'delete', 'head'].forEach((method) => {
+  /**
+   *
+   * @param url string 接口地址
+   * @param params object get参数
+   * @param options object axios 配置项
+   * @returns {AxiosPromise}
+   */
+  Api[method as Method] = (url = '', params = {}, options = {}) => {
+    return service(Object.assign({ url, params, method }, options))
+  }
+})
+
+export default Api

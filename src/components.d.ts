@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     Code: typeof import('./components/Code/Index.vue')['default']
     CodeSwiper: typeof import('./components/Code/Swiper.vue')['default']
-    copy: typeof import('./components/Limbo copy.vue')['default']
     CountDown: typeof import('./components/CountDown.vue')['default']
     Fly: typeof import('./components/Fly.vue')['default']
     Lang: typeof import('./components/lang.vue')['default']
