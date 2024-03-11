@@ -4,7 +4,7 @@
   "packageManager": "pnpm@7.17.1",
   "scripts": {
     "build": "vite build",
-    "dev": "vite --port 3333",
+    "dev": "vite --port 8080",
     "lint": "eslint .",
     "preview": "vite preview",
     "preview-https": "serve dist",
@@ -14,9 +14,12 @@
     "up": "taze major -I"
   },
   "dependencies": {
+    "@alova/adapter-axios": "^1.2.3",
+    "@alova/adapter-uniapp": "^1.2.2",
     "@pixi/sound": "^5.2.3",
     "@unocss/reset": "^0.58.5",
     "@vueuse/core": "^10.8.0",
+    "alova": "^2.17.0",
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "dayjs": "^1.11.10",
@@ -28,6 +31,7 @@
     "pinia": "^2.1.7",
     "pixi-spine": "^4.0.4",
     "pixi.js": "^7.3.3",
+    "qs": "^6.11.2",
     "vue": "^3.4.19",
     "vue-i18n": "^9.9.1",
     "vue-router": "^4.3.0",
@@ -42,6 +46,7 @@
     "@types/js-md5": "^0.7.2",
     "@types/node": "^20.11.20",
     "@types/nprogress": "^0.2.3",
+    "@types/qs": "^6.9.12",
     "@unocss/eslint-plugin": "^0.58.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue-macros/volar": "^0.18.11",

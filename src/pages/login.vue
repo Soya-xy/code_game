@@ -4,9 +4,9 @@ import md5 from 'js-md5'
 const router = useRouter()
 const toast = useToast()
 const { t: $t } = useI18n()
-const mobile = ref('')
+const mobile = ref('+91')
 const password = ref('')
-const userStore = useUserStore()
+// const userStore = useUserStore()
 function loginBtn() {
   if (!mobile.value)
     return toast.error($t('请输入手机号'))
@@ -17,7 +17,7 @@ function loginBtn() {
   login({
     mobile: mobile.value,
     password: md5.md5(password.value),
-  }).then((res) => {
+  }).then((res: any) => {
     if (res.res === 1) {
       useStorage('lgmd', false)
       useStorage('username', res.obj.user)
@@ -27,9 +27,9 @@ function loginBtn() {
       useStorage('mobile', mobile)
       useStorage('lgpp', password)
       useStorage('lgmn', mobile)
-      userInfo().then((res) => {
+      userInfo().then((res: any) => {
         if (res.res !== 0) {
-          userStore.setUser(res.obj)
+          useUserStore().setUser(res.obj)
 
           toast.success($t('登录成功'), {
             timeout: 2000,
@@ -54,14 +54,15 @@ function loginBtn() {
       <v-container fluid bg="#FAFAFA" class="min-h-[calc(100vh-64px)]">
         <v-sheet width="350" color="#FAFAFA" class="mx-auto mt-10">
           <v-text-field
-            v-model="mobile" prefix="+91" density="compact" placeholder="Mobile Number"
+            v-model="mobile" density="compact" placeholder="Mobile Number"
             prepend-inner-icon="i-mdi-cellphone" variant="solo"
             :rules="[value => !!value || 'Mobile Number is required']"
           />
 
           <v-text-field
             v-model="password" type="password" :rules="[value => !!value || 'Password is required']"
-            density="compact" placeholder="Enter your password" prepend-inner-icon="i-mdi-lock-outline" variant="solo"
+            density="compact" placeholder="Enter your password" prepend-inner-icon="i-mdi-lock-outline"
+            variant="solo"
           />
 
           <v-btn class="mb-8 mt-5" block color="#0288d1" size="large" variant="elevated" @click="loginBtn">

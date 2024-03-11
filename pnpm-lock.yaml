@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@alova/adapter-axios':
+    specifier: ^1.2.3
+    version: 1.2.3
+  '@alova/adapter-uniapp':
+    specifier: ^1.2.2
+    version: 1.2.2(alova@2.17.0)
   '@pixi/sound':
     specifier: ^5.2.3
     version: 5.2.3(@pixi/assets@7.4.0)(@pixi/core@7.4.0)
@@ -14,6 +20,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^10.8.0
     version: 10.8.0(vue@3.4.19)
+  alova:
+    specifier: ^2.17.0
+    version: 2.17.0
   autoprefixer:
     specifier: ^10.4.17
     version: 10.4.17(postcss@8.4.35)
@@ -47,6 +56,9 @@ dependencies:
   pixi.js:
     specifier: ^7.3.3
     version: 7.4.0
+  qs:
+    specifier: ^6.11.2
+    version: 6.11.2
   vue:
     specifier: ^3.4.19
     version: 3.4.19(typescript@5.3.3)
@@ -85,6 +97,9 @@ devDependencies:
   '@types/nprogress':
     specifier: ^0.2.3
     version: 0.2.3
+  '@types/qs':
+    specifier: ^6.9.12
+    version: 6.9.12
   '@unocss/eslint-plugin':
     specifier: ^0.58.5
     version: 0.58.5(eslint@8.57.0)(typescript@5.3.3)
@@ -155,6 +170,18 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /@alova/adapter-axios@1.2.3:
+    resolution: {integrity: sha512-tfVemeCWbI5dci4WESF9hIkKK51k490eeK5ilYgTF1mVw3JkmXeupQBL4m8yNX7NFViezArouPAaLhJKCIkPpA==}
+    dev: false
+
+  /@alova/adapter-uniapp@1.2.2(alova@2.17.0):
+    resolution: {integrity: sha512-O3Z4gEBMZWx6d2FTYdpQfR3Gb8YcC9o9RZWGoRmrJuvv6iJZUGXJLGQQXt5NMON9ON214nsgaQh4fH+D4ck9/Q==}
+    peerDependencies:
+      alova: '>=2.16.2'
+    dependencies:
+      alova: 2.17.0
+    dev: false
 
   /@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
@@ -2046,6 +2073,10 @@ packages:
     resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
     dev: true
 
+  /@types/qs@6.9.12:
+    resolution: {integrity: sha512-bZcOkJ6uWrL0Qb2NAWKa7TBU+mJHPzhx9jjLL1KHF+XpzEcR7EXHvjbHlGtR/IsP1vyPrehuS6XqkmaePy//mg==}
+    dev: true
+
   /@types/semver@7.5.8:
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
     dev: true
@@ -3110,6 +3141,11 @@ packages:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
     dev: true
+
+  /alova@2.17.0:
+    resolution: {integrity: sha512-aWq0BDsXOVKTYphncy9eZqalZXBpRRnIUJJ2/UWa2APzjeasAxQvXSENbBxfb9Yc/KTbqvfSo9vD3M5TVqkSWQ==}
+    engines: {node: '>= 0.12.0'}
+    dev: false
 
   /ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
