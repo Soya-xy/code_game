@@ -1,33 +1,32 @@
 <script setup lang='ts'>
 const router = useRouter()
-console.log(import.meta.env.BASE_URL)
 
 const games = [{
   name: 'Win Go',
   sub: '1Min',
-  img: `${import.meta.env.BASE_URL}img/win01.png`,
+  img: `/img/win01.png`,
   url: '/games/wingo?min=60',
 }, {
   name: 'Win Go',
   sub: '3Min',
-  img: `${import.meta.env.BASE_URL}img/win03.png`,
+  img: `/img/win03.png`,
   url: '/games/wingo?min=180',
 }, {
   name: 'Win Go',
   sub: '5Min',
-  img: `${import.meta.env.BASE_URL}img/win05.png`,
+  img: `/img/win05.png`,
   url: '/games/wingo?min=300',
 }, {
   name: 'Bit Game',
-  img: `${import.meta.env.BASE_URL}img/bit02.png`,
+  img: `/img/bit02.png`,
   url: '/games/bitgame',
 }, {
   name: 'Aviator',
-  img: `${import.meta.env.BASE_URL}img/fly01.png`,
+  img: `/img/fly01.png`,
   url: '/games/limbo',
 }, {
   name: 'Mines',
-  img: `${import.meta.env.BASE_URL}img/roc01.png`,
+  img: `/img/roc01.png`,
   url: '/games/crash',
 }]
 </script>

@@ -4,7 +4,8 @@ import { ref } from 'vue'
 const router = useRouter()
 const { query }: any = useRoute()
 const tab = ref('Parity')
-const { user } = useUserStore()
+const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
 const recordTab = ref('Parity Record')
 const number = ref(1)
 const windows = ref(false)
@@ -14,11 +15,14 @@ const items = ref([
   'Bcone',
   'Emerd',
 ])
-const gameType = ref(1)
+const startType = query.min === '60' ? 4 : (query.min === '180' ? 0 : 8)
+
+const gameType = ref(startType + 1)
 const record = computed(() => [
   `${tab.value} Record`,
   `My ${tab.value} Record`,
 ])
+const userRecord = ref([])
 
 const toggle = ref(0)
 const startTime = ref(new Date())
@@ -43,6 +47,23 @@ const headers = [{
 }, {
   key: 'resultNum',
   title: 'Number',
+  width: '30px',
+}, {
+  key: 'result',
+  title: 'Result',
+}]
+const userHeaders = [{
+  key: 'period',
+  title: 'Period',
+}, {
+  key: 'GameResult',
+  title: 'Result',
+}, {
+  key: 'winMoney',
+  title: 'winMoney',
+}, {
+  key: 'pourType',
+  title: 'Pour',
 }, {
   key: 'result',
   title: 'Result',
@@ -59,7 +80,7 @@ onMounted(() => {
 watch(tab, async () => {
   await nextTick()
   recordTab.value = record.value[0]
-  gameType.value = items.value.indexOf(tab.value) + 1
+  gameType.value = startType + (items.value.indexOf(tab.value) + 1)
   getData()
 })
 
@@ -79,6 +100,14 @@ function getData() {
   }).then((res) => {
     if (res.res !== 0)
       itemsRecord.value = res.obj.results
+  })
+  findUserGameLogByPage({
+    gameType: gameType.value,
+    pageSize: 10,
+    pageNum: pageNum.value,
+  }).then((res) => {
+    if (res.res !== 0)
+      userRecord.value = res.obj.list.results
   })
 }
 
@@ -115,9 +144,11 @@ async function pourGame(pourType: any) {
   })
   if (res.res !== 0) {
     getData()
+    userStore.getUser()
     agree.value = false
     number.value = 1
     toggle.value = 0
+    toast.success('Success')
   }
 }
 </script>
@@ -504,23 +535,72 @@ async function pourGame(pourType: any) {
             {{ item }}
           </v-tab>
         </v-tabs>
-        <v-window v-model="recordTab">
-          <v-window-item v-for="n in record" :key="n" :value="n">
+        <v-window v-model="recordTab" disabled>
+          <v-window-item :value="`${tab} Record`">
             <v-data-table :items="itemsRecord" :headers="headers">
               <template #bottom>
                 <v-pagination :length="10" variant="plain" size="small" class="custom-page" />
               </template>
 
               <!-- eslint-disable-next-line vue/valid-v-slot -->
-              <template #item.result="{ item: { result } }:any">
+              <template #item.result="{ item: { result } }: any">
                 <div flex gap-1>
                   <div
                     v-for="v in (result.split(','))" :key="v" :style="`margin-right: 5px;
-    width: 15px;
-    height: 15px;
-    background:${v}
-    `"
+                      width: 15px;
+                      height: 15px;
+                      background:${v}
+                      `"
                   />
+                </div>
+              </template>
+            </v-data-table>
+          </v-window-item>
+          <v-window-item :value="`My ${tab} Record`">
+            <v-data-table :items="userRecord" :headers="userHeaders">
+              <template #bottom>
+                <v-pagination :length="10" variant="plain" size="small" class="custom-page" />
+              </template>
+
+              <!-- eslint-disable-next-line vue/valid-v-slot -->
+              <template #item.result="{ item: { result } }: any">
+                <div flex gap-1>
+                  <div
+                    v-for="v in (result.split(','))" :key="v" :style="`margin-right: 5px;
+                      width: 15px;
+                      height: 15px;
+                      background:${v}
+                      `"
+                  >
+                    <p v-if="Number(v)">
+                      {{ v }}
+                    </p>
+                  </div>
+                </div>
+              </template>
+              <!-- eslint-disable-next-line vue/valid-v-slot -->
+              <template #item.winMoney="{ item: { winMoney } }: any">
+                <span :style="{ color: winMoney > 0 ? 'green' : 'red' }">{{ winMoney }}</span>
+              </template>
+              <!-- eslint-disable-next-line vue/valid-v-slot -->
+              <template #item.GameResult="{ item }: any">
+                <span :style="{ color: item.winMoney > 0 ? 'green' : 'red' }">{{ item.winMoney > 0 ? 'Win' : 'Fail'
+                }}</span>
+              </template>
+              <!-- eslint-disable-next-line vue/valid-v-slot -->
+              <template #item.pourType="{ item: { pourType } }: any">
+                <div flex gap-1>
+                  <div
+                    v-for="v in (pourType.split(','))" :key="v" :style="`margin-right: 5px;
+                      width: 15px;
+                      height: 15px;
+                      background:${v}
+                      `"
+                  >
+                    <p v-if="Number(v)">
+                      {{ v }}
+                    </p>
+                  </div>
                 </div>
               </template>
             </v-data-table>

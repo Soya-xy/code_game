@@ -12,6 +12,7 @@ export function login(data: any) {
 }
 export const findNotice = (e?: any) => Api.post('/user/findNotice', e)
 export const userInfo = (e?: any) => Api.post('/user/findUserInfo', e)
-export const findGameLogByPage = (e?: any) => Api.post('/lottery/findGameLogByPage', e)
-export const getPeriod = (e?: any) => Api.post('/lottery/getPeriod', e)
+export const findGameLogByPage = (e?: any) => Api.post('/wingo/findGameLogByPage', e)
+export const findUserGameLogByPage = (e?: any) => Api.post('/wingo/findUserLogByPage', e)
+export const getPeriod = (e?: any) => Api.post('/wingo/getPeriod', e)
 export const pour = (e?: any) => Api.post('/lottery/pour', e)

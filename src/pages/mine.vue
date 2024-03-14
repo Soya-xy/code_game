@@ -5,8 +5,10 @@ const router = useRouter()
 const user = ref<any>()
 
 userInfo().then((res) => {
-  if (res.res !== 0)
+  if (res.res !== 0) {
+    useUserStore().setUser(res.obj)
     user.value = res.obj
+  }
 })
 const promotoId = useStorage('promotoId', '')
 console.log('🚀 ~ promotoId:', promotoId)

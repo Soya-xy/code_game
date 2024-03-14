@@ -38,7 +38,7 @@ function setLang(local: string) {
   <v-menu location="bottom" transition="slide-y-transition" eager :content-class="`${active === 'ar' ? '!left-0 !right-unset' : '!left-unset !right-0'}`">
     <template #activator="{ props }">
       <v-btn v-bind="props">
-        <img :src="`${BASE_URL}/img/lang/${active}.png`" class="h-28px w-28px">
+        <img :src="`/img/lang/${active}.png`" class="h-28px w-28px">
       </v-btn>
     </template>
     <v-list color="#5713D4">
@@ -47,7 +47,7 @@ function setLang(local: string) {
         @click="setLang(item.value)"
       >
         <v-list-item-title class="h-30px w-30px">
-          <img :src="`${BASE_URL}/img/lang/${item.value}.png`" class="h-full w-full">
+          <img :src="`/img/lang/${item.value}.png`" class="h-full w-full">
         </v-list-item-title>
       </v-list-item>
     </v-list>

@@ -46,11 +46,13 @@ declare global {
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const findGameLogByPage: typeof import('./api/index')['findGameLogByPage']
   const findNotice: typeof import('./api/index')['findNotice']
+  const findUserGameLogByPage: typeof import('./api/index')['findUserGameLogByPage']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getIndex: typeof import('./api/index')['getIndex']
   const getPeriod: typeof import('./api/index')['getPeriod']
+  const getWingoPeriod: typeof import('./api/index')['getWingoPeriod']
   const h: typeof import('vue')['h']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
@@ -372,6 +374,7 @@ declare module 'vue' {
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly findGameLogByPage: UnwrapRef<typeof import('./api/index')['findGameLogByPage']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>
+    readonly findUserGameLogByPage: UnwrapRef<typeof import('./api/index')['findUserGameLogByPage']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -689,6 +692,7 @@ declare module '@vue/runtime-core' {
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly findGameLogByPage: UnwrapRef<typeof import('./api/index')['findGameLogByPage']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>
+    readonly findUserGameLogByPage: UnwrapRef<typeof import('./api/index')['findUserGameLogByPage']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>

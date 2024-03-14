@@ -23,7 +23,6 @@ const _dirname
     : dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '' : '/lottery-backend/',
   resolve: {
     alias: {
       '~/': `${resolve(_dirname, 'src')}/`,
@@ -104,10 +103,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     proxy: {
-      '/lottery-backend/api': {
-        target: 'http://reliancemall.co/lottery-backend/glserver',
+      '/lottery-backend': {
+        target: 'https://reliancemall.in',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/lottery-backend\/api/, ''),
+        // rewrite: path => path.replace(/^\/api/, ''),
       },
     },
   },

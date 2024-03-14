@@ -6,7 +6,7 @@ type Ajax = Record<Method, (url: string, data?: any, options?: any) => Promise<a
 const toast = useToast()
 // export const baseApi = 'https://reliancemall.in/lottery-backend/glserver'
 // export const baseApi = 'http://127.0.0.1:8081/api/v1'
-export const baseApi = import.meta.env.MODE === 'development' ? '/lottery-backend/api' : 'https://reliancemall.in/lottery-backend/glserver'
+export const baseApi = import.meta.env.MODE === 'development' ? '/lottery-backend/glserver' : 'https://reliancemall.in/lottery-backend/glserver'
 
 export interface APIResponse {
   data: any
