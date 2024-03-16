@@ -1,6 +1,37 @@
 <script setup lang='ts'>
-const money = ref(0)
+import { Clipboard } from 'v-clipboard'
+
 const tab = ref(1)
+const linkUrl = ref('')
+const code = ref('')
+const people = ref(0)
+const contribution = ref(0)
+const bonus = ref(0)
+
+watch(tab, (e) => {
+  findPromote({ level: e }).then((res) => {
+    if (res.res === 1) {
+      linkUrl.value = res.obj.link
+      code.value = res.obj.code
+      people.value = res.obj.people
+      contribution.value = res.obj.contribution
+      bonus.value = res.obj.bonus
+    }
+  })
+}, {
+  immediate: true,
+})
+
+const toast = useToast()
+function copy() {
+  try {
+    Clipboard.copy(linkUrl.value)
+    toast.success('Success')
+  }
+  catch (error) {
+
+  }
+}
 </script>
 
 <template>
@@ -15,7 +46,7 @@ const tab = ref(1)
     <v-main>
       <v-container bg="#FAFAFA" class="h-[calc(100vh-120px)] overflow-scroll p2">
         <v-card :elevation="3">
-          <v-card :title="`Bonus: ₹ ${(money).toFixed(2)}`" rounded="0" flex flex-col items-center>
+          <v-card :title="`Bonus: ₹ ${(bonus).toFixed(2)}`" rounded="0" flex flex-col items-center>
             <template #actions>
               <v-btn color="#5713d4" variant="flat" :elevation="2" :rounded="0" my-3>
                 Apply to Balance
@@ -40,28 +71,32 @@ const tab = ref(1)
                       <div text="16px #000000de center" font-bold flex="1">
                         <p>Total People</p>
                         <p text="22px">
-                          0
+                          {{ people }}
                         </p>
                       </div>
                       <div text="16px #000000de center" font-bold flex="1">
                         <p>Contribution</p>
                         <p text="22px">
-                          ₹ 0.00
+                          ₹ {{ contribution }}
                         </p>
                       </div>
                     </div>
                     <div mt10>
-                      <v-text-field model-value="954721938DE" label="My Promotion Code" variant="underlined" readonly />
-                      <div pt-4>
+                      <v-text-field :model-value="code" label="My Promotion Code" variant="underlined" readonly />
+                      <div
+                        class="onlyLink"
+                        pt-4 :data-clipboard-text="linkUrl"
+                      >
                         <v-textarea
-                          model-value="https://cooe.in/#/register?r_code=95357ACG" label="My Promotion Link"
-                          variant="underlined" readonly rows="3"
+                          :model-value="linkUrl"
+                          label="My Promotion Link" variant="underlined" readonly
+                          rows="3"
                         />
                       </div>
                     </div>
                     <div w-full flex justify="center">
-                      <v-btn color="" variant="tonal" :width="200" :elevation="2" :rounded="0" my-3>
-                        Open Link
+                      <v-btn color="" variant="tonal" :width="200" :elevation="2" :rounded="0" my-3 @click="copy">
+                        Copy Link
                       </v-btn>
                     </div>
                   </div>

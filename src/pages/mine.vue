@@ -84,8 +84,8 @@ if (!promotoId.value)
                 <v-list-item v-bind="props" title="About" prepend-icon="i-mdi-message-alert" color="#5713d4" />
               </template>
 
-              <v-list-item title="Privacy Policy" link />
-              <v-list-item title="Risk Disclosure Agreement" link />
+              <v-list-item title="Privacy Policy" link href="/#/privacy" />
+              <v-list-item title="Risk Disclosure Agreement" link href="/#/risk" />
             </v-list-group>
           </v-list>
         </v-card>

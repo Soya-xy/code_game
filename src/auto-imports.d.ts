@@ -16,6 +16,7 @@ declare global {
   const Message: typeof import('@)['Message']
   const Modal: typeof import('@arco-design/web-vue')['Modal']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
+  const addBankCard: typeof import('./api/index')['addBankCard']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']
@@ -41,11 +42,16 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
+  const delBankCard: typeof import('./api/index')['delBankCard']
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
+  const editBankCard: typeof import('./api/index')['editBankCard']
   const effectScope: typeof import('vue')['effectScope']
   const extendRef: typeof import('@vueuse/core')['extendRef']
+  const findBankCard: typeof import('./api/index')['findBankCard']
   const findGameLogByPage: typeof import('./api/index')['findGameLogByPage']
+  const findMoneyTranceList: typeof import('./api/index')['findMoneyTranceList']
   const findNotice: typeof import('./api/index')['findNotice']
+  const findPromote: typeof import('./api/index')['findPromote']
   const findUserGameLogByPage: typeof import('./api/index')['findUserGameLogByPage']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
@@ -344,6 +350,7 @@ declare module 'vue' {
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
+    readonly addBankCard: UnwrapRef<typeof import('./api/index')['addBankCard']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -369,11 +376,16 @@ declare module 'vue' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
+    readonly delBankCard: UnwrapRef<typeof import('./api/index')['delBankCard']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
+    readonly editBankCard: UnwrapRef<typeof import('./api/index')['editBankCard']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly findBankCard: UnwrapRef<typeof import('./api/index')['findBankCard']>
     readonly findGameLogByPage: UnwrapRef<typeof import('./api/index')['findGameLogByPage']>
+    readonly findMoneyTranceList: UnwrapRef<typeof import('./api/index')['findMoneyTranceList']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>
+    readonly findPromote: UnwrapRef<typeof import('./api/index')['findPromote']>
     readonly findUserGameLogByPage: UnwrapRef<typeof import('./api/index')['findUserGameLogByPage']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -662,6 +674,7 @@ declare module '@vue/runtime-core' {
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
+    readonly addBankCard: UnwrapRef<typeof import('./api/index')['addBankCard']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -687,11 +700,16 @@ declare module '@vue/runtime-core' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
+    readonly delBankCard: UnwrapRef<typeof import('./api/index')['delBankCard']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
+    readonly editBankCard: UnwrapRef<typeof import('./api/index')['editBankCard']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly findBankCard: UnwrapRef<typeof import('./api/index')['findBankCard']>
     readonly findGameLogByPage: UnwrapRef<typeof import('./api/index')['findGameLogByPage']>
+    readonly findMoneyTranceList: UnwrapRef<typeof import('./api/index')['findMoneyTranceList']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>
+    readonly findPromote: UnwrapRef<typeof import('./api/index')['findPromote']>
     readonly findUserGameLogByPage: UnwrapRef<typeof import('./api/index')['findUserGameLogByPage']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>

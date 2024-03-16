@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import './assets'
 import vuetify, { i18n } from '~/plugins/vuetify'
+import Clipboard from 'v-clipboard'
 
 // Import the CSS or use your own!
 import 'vue-toastification/dist/index.css'
@@ -15,6 +16,7 @@ app.use(router)
   .use(pinia)
   .use(vuetify)
   .use(i18n)
+  .use(Clipboard)
   .use(Toast, {
     position: 'top-center',
   })

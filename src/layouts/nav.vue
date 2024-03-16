@@ -20,7 +20,7 @@ function jump() {
         </v-app-bar>
 
         <v-main>
-          <v-container bg="#FAFAFA" class="h-[calc(100vh-120px)] overflow-scroll p0">
+          <v-container bg="#FAFAFA" class="h-[calc(100vh-60px)] overflow-scroll p0">
             <main>
               <RouterView />
             </main>
@@ -28,6 +28,6 @@ function jump() {
         </v-main>
       </v-layout>
     </Suspense>
-    <TabbarTabbar />
+    <!-- <TabbarTabbar /> -->
   </div>
 </template>
