@@ -79,11 +79,6 @@ function loginBtn() {
   </v-layout>
 </template>
 
-<route lang="yaml">
-meta:
-  layout: empty
-</route>
-
 <style>
 .v-text-field__prefix {
   opacity: 1;
