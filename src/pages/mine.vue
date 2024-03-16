@@ -32,8 +32,23 @@ if (!promotoId.value)
       <v-app-bar-title>Mine</v-app-bar-title>
       <template #append>
         <p>₹ {{ user?.money }}</p>
-        <v-btn icon="i-mdi-credit-card-check-outline " />
-        <v-btn icon="i-mdi-bell" />
+        <!-- <v-btn icon="i-mdi-credit-card-check-outline " /> -->
+        <v-btn p="!0" :width="28">
+          <v-avatar size="28">
+            <i class="i-mdi-bell" text-28px text-white />
+          </v-avatar>
+          <v-dialog
+            min-width="325px" transition="dialog-bottom-transition"
+            activator="parent" width="auto"
+          >
+            <v-card>
+              <v-toolbar color="primary" title="RelianceMall" />
+              <p p2>
+                We will bring you a better gaming experience Minimum recharge 100RS Minimum withdrawal 230RS,Invite members to recharge 300 rupees to get bonus 158 rupees. About Recharge and withdrawal, you can send questions to email: reliancemall555@gmail.com
+              </p>
+            </v-card>
+          </v-dialog>
+        </v-btn>
       </template>
     </v-app-bar>
 
