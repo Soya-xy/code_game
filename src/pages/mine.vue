@@ -11,10 +11,26 @@ userInfo().then((res) => {
   }
 })
 const promotoId = useStorage('promotoId', '')
-console.log('🚀 ~ promotoId:', promotoId)
 const mobile = useStorage('mobile', '')
 if (!promotoId.value)
   router.replace('/login')
+
+const toast = useToast()
+const newName = ref('')
+function changeName(_e: any) {
+  changeNick({ nickname: newName.value }).then((res) => {
+    if (res.res === 1) {
+      toast.success('Success')
+      userInfo().then((res) => {
+        if (res.res !== 0) {
+          useUserStore().setUser(res.obj)
+          user.value = res.obj
+        }
+      })
+    }
+    else { toast.error(res.resMsg) }
+  })
+}
 </script>
 
 <template>
@@ -37,14 +53,13 @@ if (!promotoId.value)
           <v-avatar size="28">
             <i class="i-mdi-bell" text-28px text-white />
           </v-avatar>
-          <v-dialog
-            min-width="325px" transition="dialog-bottom-transition"
-            activator="parent" width="auto"
-          >
+          <v-dialog min-width="325px" transition="dialog-bottom-transition" activator="parent" width="auto">
             <v-card>
               <v-toolbar color="primary" title="RelianceMall" />
               <p p2>
-                We will bring you a better gaming experience Minimum recharge 100RS Minimum withdrawal 230RS,Invite members to recharge 300 rupees to get bonus 158 rupees. About Recharge and withdrawal, you can send questions to email: reliancemall555@gmail.com
+                We will bring you a better gaming experience Minimum recharge 100RS Minimum withdrawal 230RS,Invite
+                members to recharge 300 rupees to get bonus 158 rupees. About Recharge and withdrawal, you can send
+                questions to email: reliancemall555@gmail.com
               </p>
             </v-card>
           </v-dialog>
@@ -61,8 +76,33 @@ if (!promotoId.value)
               Mobile: <span>{{ mobile }}</span>
             </p>
             <p>
-              Nick Name: {{ user?.nickname }}<v-btn variant="text" color="#1565C0">
+              Nick Name: {{ user?.nickname }}
+              <v-btn variant="text" color="#1565C0">
                 CHANGE
+                <v-dialog
+                  min-width="325px" transition="dialog-bottom-transition" persistent
+                  activator="parent" width="auto"
+                >
+                  <template #default="{ isActive }">
+                    <v-card>
+                      <v-toolbar color="primary" title="CHANGE Nick Name" />
+
+                      <v-text-field
+                        v-model="newName" density="compact" placeholder="Nick Name" variant="solo"
+                        :rules="[value => !!value || 'Nick Name is required']"
+                      />
+
+                      <v-card-actions class="justify-end">
+                        <v-btn variant="text" @click="isActive.value = false">
+                          CANCEL
+                        </v-btn>
+                        <v-btn variant="text" color="primary" @click="changeName(''), isActive.value = false">
+                          CONFIRM
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </template>
+                </v-dialog>
               </v-btn>
             </p>
           </div>
@@ -74,7 +114,10 @@ if (!promotoId.value)
               <v-btn mb-2 icon="i-mdi-cash-check" size="small" :elevation="10" color="#1565c0" />Withdraw
             </div>
             <div flex="~ col" items-center @click="router.push('/transactions')">
-              <v-btn mb-2 icon="i-mdi-ballot-recount-outline" size="small" :elevation="10" color="#1565c0" />Transactions
+              <v-btn
+                mb-2 icon="i-mdi-ballot-recount-outline" size="small" :elevation="10"
+                color="#1565c0"
+              />Transactions
             </div>
             <div flex="~ col" items-center @click="router.push('/bank')">
               <v-btn mb-2 icon="i-mdi-credit-card-outline" size="small" :elevation="10" color="#1565c0" />Bank Card
@@ -89,7 +132,7 @@ if (!promotoId.value)
                 <v-list-item v-bind="props" prepend-icon="i-mdi-security" title="Account Security" color="#5713d4" />
               </template>
 
-              <v-list-item title="Reset Password" link />
+              <v-list-item title="Reset Password" link href="/#/resetps" />
             </v-list-group>
 
             <v-list-item prepend-icon="i-mdi-message-bulleted" title="Complaints & Suggestions" link border />

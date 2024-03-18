@@ -19,6 +19,8 @@ declare global {
   const addBankCard: typeof import('./api/index')['addBankCard']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const balance: typeof import('./api/index')['balance']
+  const changeNick: typeof import('./api/index')['changeNick']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
   const computedEager: typeof import('@vueuse/core')['computedEager']
@@ -52,6 +54,8 @@ declare global {
   const findMoneyTranceList: typeof import('./api/index')['findMoneyTranceList']
   const findNotice: typeof import('./api/index')['findNotice']
   const findPromote: typeof import('./api/index')['findPromote']
+  const findRechargeInfo: typeof import('./api/index')['findRechargeInfo']
+  const findUsdtRechargeInfo: typeof import('./api/index')['findUsdtRechargeInfo']
   const findUserGameLogByPage: typeof import('./api/index')['findUserGameLogByPage']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
@@ -98,6 +102,8 @@ declare global {
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
   const pausableWatch: typeof import('@vueuse/core')['pausableWatch']
+  const payment: typeof import('./api/index')['payment']
+  const paymentPost: typeof import('./api/index')['paymentPost']
   const postIndex: typeof import('./api/index')['postIndex']
   const pour: typeof import('./api/index')['pour']
   const provide: typeof import('vue')['provide']
@@ -354,6 +360,8 @@ declare module 'vue' {
     readonly addBankCard: UnwrapRef<typeof import('./api/index')['addBankCard']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
+    readonly balance: UnwrapRef<typeof import('./api/index')['balance']>
+    readonly changeNick: UnwrapRef<typeof import('./api/index')['changeNick']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
     readonly computedEager: UnwrapRef<typeof import('@vueuse/core')['computedEager']>
@@ -387,6 +395,8 @@ declare module 'vue' {
     readonly findMoneyTranceList: UnwrapRef<typeof import('./api/index')['findMoneyTranceList']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>
     readonly findPromote: UnwrapRef<typeof import('./api/index')['findPromote']>
+    readonly findRechargeInfo: UnwrapRef<typeof import('./api/index')['findRechargeInfo']>
+    readonly findUsdtRechargeInfo: UnwrapRef<typeof import('./api/index')['findUsdtRechargeInfo']>
     readonly findUserGameLogByPage: UnwrapRef<typeof import('./api/index')['findUserGameLogByPage']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -431,6 +441,7 @@ declare module 'vue' {
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
+    readonly paymentPost: UnwrapRef<typeof import('./api/index')['paymentPost']>
     readonly postIndex: UnwrapRef<typeof import('./api/index')['postIndex']>
     readonly pour: UnwrapRef<typeof import('./api/index')['pour']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
@@ -679,6 +690,8 @@ declare module '@vue/runtime-core' {
     readonly addBankCard: UnwrapRef<typeof import('./api/index')['addBankCard']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
+    readonly balance: UnwrapRef<typeof import('./api/index')['balance']>
+    readonly changeNick: UnwrapRef<typeof import('./api/index')['changeNick']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
     readonly computedEager: UnwrapRef<typeof import('@vueuse/core')['computedEager']>
@@ -712,6 +725,8 @@ declare module '@vue/runtime-core' {
     readonly findMoneyTranceList: UnwrapRef<typeof import('./api/index')['findMoneyTranceList']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>
     readonly findPromote: UnwrapRef<typeof import('./api/index')['findPromote']>
+    readonly findRechargeInfo: UnwrapRef<typeof import('./api/index')['findRechargeInfo']>
+    readonly findUsdtRechargeInfo: UnwrapRef<typeof import('./api/index')['findUsdtRechargeInfo']>
     readonly findUserGameLogByPage: UnwrapRef<typeof import('./api/index')['findUserGameLogByPage']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -756,6 +771,7 @@ declare module '@vue/runtime-core' {
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
+    readonly paymentPost: UnwrapRef<typeof import('./api/index')['paymentPost']>
     readonly postIndex: UnwrapRef<typeof import('./api/index')['postIndex']>
     readonly pour: UnwrapRef<typeof import('./api/index')['pour']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>

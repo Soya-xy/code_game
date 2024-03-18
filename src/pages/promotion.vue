@@ -7,6 +7,8 @@ const code = ref('')
 const people = ref(0)
 const contribution = ref(0)
 const bonus = ref(0)
+const money = ref('')
+const overlay = ref(false)
 
 watch(tab, (e) => {
   findPromote({ level: e }).then((res) => {
@@ -32,6 +34,21 @@ function copy() {
 
   }
 }
+
+function apply(_e: any) {
+  if (!money.value || Number(money.value) <= 0)
+    return toast.error('Please input bonus')
+  overlay.value = true
+  balance({
+    bonus: money.value,
+  }).then((res) => {
+    if (res.res === 1)
+      toast.success('SUCCESS')
+
+    else
+      toast.error(res.resMsg)
+  }).finally(() => overlay.value = false)
+}
 </script>
 
 <template>
@@ -50,6 +67,30 @@ function copy() {
             <template #actions>
               <v-btn color="#5713d4" variant="flat" :elevation="2" :rounded="0" my-3>
                 Apply to Balance
+                <v-dialog
+                  min-width="325px" transition="dialog-bottom-transition" persistent activator="parent"
+                  width="auto"
+                >
+                  <template #default="{ isActive }">
+                    <v-card>
+                      <v-toolbar color="primary" title="Apply to Balance" />
+                      <v-sheet width="80%" color="#FAFAFA" class="mx-auto mt-10">
+                        <v-text-field
+                          v-model="money" density="compact" placeholder="Bonus"
+                          variant="solo"
+                        />
+                      </v-sheet>
+                      <v-card-actions class="justify-end">
+                        <v-btn variant="text" @click="isActive.value = false">
+                          CANCEL
+                        </v-btn>
+                        <v-btn variant="text" color="primary" @click="apply(''), isActive.value = false">
+                          CONFIRM
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </template>
+                </v-dialog>
               </v-btn>
             </template>
           </v-card>
@@ -107,5 +148,8 @@ function copy() {
         </v-card>
       </v-container>
     </v-main>
+    <v-overlay :model-value="overlay" persistent class="align-center justify-center">
+      <v-progress-circular color="primary" size="64" indeterminate />
+    </v-overlay>
   </v-layout>
 </template>
