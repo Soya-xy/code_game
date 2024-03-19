@@ -7,7 +7,7 @@ const WhatsApp = ref<string>('')
 const outId = ref<string>('')
 const toast = useToast()
 const type = ref<string>('')
-
+const loading = useLoading()
 function submit() {
   if (!outId.value)
     return toast.error('Please input outId')
@@ -17,6 +17,8 @@ function submit() {
     return toast.error('Please input Description')
   if (!type.value)
     return toast.error('Please select type')
+  loading.setLoading(true)
+
   addComplaints({
     whatsapp: WhatsApp.value,
     outId: outId.value,
@@ -30,7 +32,7 @@ function submit() {
         },
       })
     }
-  })
+  }).finally(() => loading.setLoading(false))
 }
 </script>
 

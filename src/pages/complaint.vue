@@ -3,10 +3,13 @@ const router = useRouter()
 const tab = ref('one')
 const list: any = ref([])
 const suggestList = ['Suggestion', 'Consult', 'Recharge Problem', 'Withdraw Problem', 'Parity Problem', 'Gift Receive Problem', 'Other']
-
+const loading = useLoading()
+loading.setLoading(true)
 findComplaints({ handleStatus: 1 }).then((res) => {
-  if (res.res === 1)
+  if (res.res === 1) {
     list.value = res.obj
+    loading.setLoading(false)
+  }
 })
 
 watch(tab, (val) => {

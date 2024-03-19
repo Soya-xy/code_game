@@ -7,12 +7,14 @@ const { t: $t } = useI18n()
 const mobile = ref('+91')
 const password = ref('')
 // const userStore = useUserStore()
+const loading = useLoading()
 function loginBtn() {
   if (!mobile.value)
     return toast.error($t('请输入手机号'))
 
   if (!password.value)
     return toast.error($t('请输入密码'))
+  loading.setLoading(true)
 
   login({
     mobile: mobile.value,
@@ -40,7 +42,7 @@ function loginBtn() {
         }
       })
     }
-  })
+  }).finally(() => loading.setLoading(false))
 }
 </script>
 
