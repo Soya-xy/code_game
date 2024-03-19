@@ -17,6 +17,10 @@ findNotice().then((res: any) => {
   if (res.res !== 0)
     noticeList.value = res.obj
 })
+
+function download() {
+  location.href = `${location.origin}/down/h5app.apk`
+}
 </script>
 
 <template>
@@ -24,6 +28,7 @@ findNotice().then((res: any) => {
     <v-toolbar color="#5713d4" elevation="4" height="58" extension-height="40">
       <v-toolbar-title><img src="/img/logo.png" w-25 alt="" srcset=""></v-toolbar-title>
       <div>
+        <v-btn icon="i-mdi-download" @click="download" />
         <v-btn icon="i-mdi-bell" />
         <Lang />
       </div>

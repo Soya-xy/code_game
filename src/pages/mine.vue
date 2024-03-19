@@ -3,6 +3,7 @@
 // const tab = ref(1)
 const router = useRouter()
 const user = ref<any>()
+const startStar = ref(Number(localStorage.getItem('msg')) === 1)
 
 userInfo().then((res) => {
   if (res.res !== 0) {
@@ -35,7 +36,7 @@ function changeName(_e: any) {
 
 <template>
   <v-layout>
-    <v-app-bar color="#e0e0e0" :height="56">
+    <!-- <v-app-bar color="#e0e0e0" :height="56">
       <v-app-bar-title>Download App</v-app-bar-title>
       <template #prepend>
         <img src="https://cooe.in/images/cooe_app_icon.png" h45px w45px>
@@ -43,7 +44,7 @@ function changeName(_e: any) {
       <template #append>
         <v-btn icon="i-mdi-download" />
       </template>
-    </v-app-bar>
+    </v-app-bar> -->
     <v-app-bar elevation="3" color="#5713d4" :height="56">
       <v-app-bar-title>Mine</v-app-bar-title>
       <template #append>
@@ -135,15 +136,24 @@ function changeName(_e: any) {
               <v-list-item title="Reset Password" link href="/#/resetps" />
             </v-list-group>
 
-            <v-list-item prepend-icon="i-mdi-message-bulleted" title="Complaints & Suggestions" link border />
+            <v-list-item prepend-icon="i-mdi-message-bulleted" title="Complaints & Suggestions" link border href="/#/complaint" />
 
-            <v-list-group value="Admin" collapse-icon="i-mdi-menu-up" expand-icon="i-mdi-menu-down">
+            <v-list-group value="Admin" collapse-icon="i-mdi-menu-up" expand-icon="i-mdi-menu-down" border-b="1px solid #E0E0E0">
               <template #activator="{ props }">
                 <v-list-item v-bind="props" title="About" prepend-icon="i-mdi-message-alert" color="#5713d4" />
               </template>
 
               <v-list-item title="Privacy Policy" link href="/#/privacy" />
               <v-list-item title="Risk Disclosure Agreement" link href="/#/risk" />
+            </v-list-group>
+
+            <v-list-group v-if="startStar" value="Star" collapse-icon="i-mdi-menu-up" expand-icon="i-mdi-menu-down">
+              <template #activator="{ props }">
+                <v-list-item v-bind="props" title="Start Agent" prepend-icon="i-mdi-star" color="#5713d4" />
+              </template>
+
+              <v-list-item title="Subordinates List" link href="/#/star/list" />
+              <v-list-item title="Subordinates Report" link href="/#/star/report" />
             </v-list-group>
           </v-list>
         </v-card>

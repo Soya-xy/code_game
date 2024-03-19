@@ -17,6 +17,7 @@ declare global {
   const Modal: typeof import('@arco-design/web-vue')['Modal']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const addBankCard: typeof import('./api/index')['addBankCard']
+  const addComplaints: typeof import('./api/index')['addComplaints']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const balance: typeof import('./api/index')['balance']
@@ -49,7 +50,10 @@ declare global {
   const editBankCard: typeof import('./api/index')['editBankCard']
   const effectScope: typeof import('vue')['effectScope']
   const extendRef: typeof import('@vueuse/core')['extendRef']
+  const findAllInfo: typeof import('./api/index')['findAllInfo']
   const findBankCard: typeof import('./api/index')['findBankCard']
+  const findComplaints: typeof import('./api/index')['findComplaints']
+  const findDownByPage: typeof import('./api/index')['findDownByPage']
   const findGameLogByPage: typeof import('./api/index')['findGameLogByPage']
   const findMoneyTranceList: typeof import('./api/index')['findMoneyTranceList']
   const findNotice: typeof import('./api/index')['findNotice']
@@ -358,6 +362,7 @@ declare module 'vue' {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly addBankCard: UnwrapRef<typeof import('./api/index')['addBankCard']>
+    readonly addComplaints: UnwrapRef<typeof import('./api/index')['addComplaints']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly balance: UnwrapRef<typeof import('./api/index')['balance']>
@@ -390,7 +395,10 @@ declare module 'vue' {
     readonly editBankCard: UnwrapRef<typeof import('./api/index')['editBankCard']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly findAllInfo: UnwrapRef<typeof import('./api/index')['findAllInfo']>
     readonly findBankCard: UnwrapRef<typeof import('./api/index')['findBankCard']>
+    readonly findComplaints: UnwrapRef<typeof import('./api/index')['findComplaints']>
+    readonly findDownByPage: UnwrapRef<typeof import('./api/index')['findDownByPage']>
     readonly findGameLogByPage: UnwrapRef<typeof import('./api/index')['findGameLogByPage']>
     readonly findMoneyTranceList: UnwrapRef<typeof import('./api/index')['findMoneyTranceList']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>
@@ -688,6 +696,7 @@ declare module '@vue/runtime-core' {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly addBankCard: UnwrapRef<typeof import('./api/index')['addBankCard']>
+    readonly addComplaints: UnwrapRef<typeof import('./api/index')['addComplaints']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly balance: UnwrapRef<typeof import('./api/index')['balance']>
@@ -720,7 +729,10 @@ declare module '@vue/runtime-core' {
     readonly editBankCard: UnwrapRef<typeof import('./api/index')['editBankCard']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly findAllInfo: UnwrapRef<typeof import('./api/index')['findAllInfo']>
     readonly findBankCard: UnwrapRef<typeof import('./api/index')['findBankCard']>
+    readonly findComplaints: UnwrapRef<typeof import('./api/index')['findComplaints']>
+    readonly findDownByPage: UnwrapRef<typeof import('./api/index')['findDownByPage']>
     readonly findGameLogByPage: UnwrapRef<typeof import('./api/index')['findGameLogByPage']>
     readonly findMoneyTranceList: UnwrapRef<typeof import('./api/index')['findMoneyTranceList']>
     readonly findNotice: UnwrapRef<typeof import('./api/index')['findNotice']>

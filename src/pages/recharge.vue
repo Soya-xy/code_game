@@ -13,6 +13,8 @@ const usdtRate = ref(0)
 const payment = ref<any>([])
 const overlay = ref(true)
 
+const { user } = useUserStore()
+
 findRechargeInfo().then((res) => {
   if (res.res === 1)
     payment.value = res.obj.list
@@ -214,6 +216,11 @@ function getRechargeResult(orderNo: any) {
     toast.error(data.msg)
   }
 }
+
+function fillInfo(_e: any) {
+  actualName.value = user.nickname
+  mobile.value = localStorage.getItem('mobile') || ''
+}
 </script>
 
 <template>
@@ -273,12 +280,18 @@ function getRechargeResult(orderNo: any) {
                 <v-btn variant="elevated" color="#5713D4" w-full>
                   Recharge
                   <v-dialog
+                    v-if="payment?.[selectedKey]?.channelName"
                     min-width="325px" transition="dialog-bottom-transition" persistent activator="parent"
                     width="auto"
                   >
                     <template #default="{ isActive }">
                       <v-card>
                         <v-toolbar color="primary" :title="payment[selectedKey].channelName" />
+                        <div flex justify="center">
+                          <v-btn slim color="primary" width="80" mt2 @click="fillInfo">
+                            Auto Fill
+                          </v-btn>
+                        </div>
                         <v-sheet width="80%" color="#FAFAFA" class="mx-auto mt-10">
                           <v-text-field
                             v-model="mobile" density="compact" placeholder="Mobile Number"
