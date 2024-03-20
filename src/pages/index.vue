@@ -7,6 +7,8 @@ import Lang from '~/components/lang.vue'
 const { t: $t } = useI18n()
 
 const tab = ref()
+const isRead = localStorage.getItem('isRead') === '1'
+const showToast = ref(!isRead)
 const noticeList = ref<any>([])
 const items = ref([
   $t('CODE GAMES'),
@@ -20,6 +22,10 @@ findNotice().then((res: any) => {
 
 function download() {
   location.href = `${location.origin}/down/h5app.apk`
+}
+function closeModal() {
+  showToast.value = false
+  localStorage.setItem('isRead', '1')
 }
 </script>
 
@@ -49,10 +55,7 @@ function download() {
       <v-window-item v-for="(item, index) in items" :key="item" :value="item">
         <div v-if="index === 0" class="h-[calc(100vh-110px)] overflow-y-scroll bg-[#FAFAFA] pb-24">
           <Swiper />
-          <NoticeBarVue
-            :text="noticeList?.[0]?.message" background="#E4E0EC"
-            left-icon="i-mdi-bell text-[#5713D4]"
-          />
+          <NoticeBarVue :text="noticeList?.[0]?.message" background="#E4E0EC" left-icon="i-mdi-bell text-[#5713D4]" />
           <Code />
         </div>
         <!-- <template v-else>
@@ -79,5 +82,32 @@ function download() {
         </template> -->
       </v-window-item>
     </v-window>
+
+    <v-dialog v-model="showToast" max-width="500" persistent>
+      <v-card title="Notice">
+        <v-card-text class="!text-12px !leading-18px">
+          <span>
+            Important Tips: @lmportant Tips: Please do not transferdirectly to the account you have paid for.
+            Pleaserecharge
+            according to the account on the rechargeinterface. @In order to facilitate each user's withdrawal,our
+            withdrawal
+            time is 10:00-22:00. No withdrawalservice is provided at other times. @For rechargeissues,please send
+            details to
+            online customer service! Send these details, 1. Your cooe lD 2. Amount 3.Payment date 4.Payment screenshot
+            so
+            your issue canbe handled as soon as possible!5.Cooe has stoppedreporting problems through Google mailbox. lf
+            you
+            haveany questions, please provide feedback through the livechat in the lower left corner of the game
+            homepage.@For added account security, OTp login is requiredwhen logging in from a new mobile device. lf you
+            don'tsee the otp option, refresh your browser page. Thanks
+          </span>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text="CLOSE" @click="closeModal" />
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>

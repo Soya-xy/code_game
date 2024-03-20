@@ -63,8 +63,9 @@ service.interceptors.response.use(
       return Promise.reject(res || 'error')
     }
     if (res?.status === 401 || res?.res === 401) {
-      // // 登录超时,重新登录
-      // router.replace('/login')
+      // // 登录超时,重新登录\
+      localStorage.clear()
+      router.replace('/login')
       return Promise.resolve(res)
     }
     else {
@@ -76,7 +77,7 @@ service.interceptors.response.use(
     if (res?.status === 401) {
       setTimeout(() => {
         localStorage.clear()
-        router.push('/login')
+        router.replace('/login')
       }, 1500)
     }
     else {

@@ -35,7 +35,7 @@ function setLang(local: string) {
 </script>
 
 <template>
-  <v-menu location="bottom" transition="slide-y-transition" eager :content-class="`${active === 'ar' ? '!left-0 !right-unset' : '!left-unset !right-0'}`">
+  <v-menu location="bottom" transition="slide-y-transition" eager content-class="!left-unset !right-0">
     <template #activator="{ props }">
       <v-btn v-bind="props">
         <img :src="`/img/lang/${active}.png`" class="h-28px w-28px">

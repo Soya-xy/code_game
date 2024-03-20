@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import md5 from 'js-md5'
 
+localStorage.clear()
 const router = useRouter()
 const toast = useToast()
 const { t: $t } = useI18n()

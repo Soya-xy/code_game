@@ -160,9 +160,44 @@ async function pourGame(pourType: any) {
       <v-app-bar-title>Win Go</v-app-bar-title>
       <template #append>
         <p>₹ {{ user?.money }}</p>
-        <v-btn icon="i-mdi-wallet" />
+        <v-btn icon="i-mdi-wallet" @click="router.push('/recharge')" />
 
-        <v-btn icon="i-mdi-help-circle" />
+        <v-btn>
+          <v-avatar size="28">
+            <i class="i-mdi-help-circle" text-28px text-white />
+          </v-avatar>
+          <v-dialog min-width="325px" transition="dialog-bottom-transition" activator="parent" width="auto">
+            <v-card>
+              <v-toolbar color="primary" title="GAME RULE" />
+              <div style="padding: 4px;">
+                3 minutes 1 issue, 2 minutes 30 seconds you can place your bet and 30 seconds to show the lottery
+                result. it open 24/7. The total number of trades is 480 issues.
+              </div>
+              <div style="padding: 4px;">
+                If you spend 100 to trade, after the deduction 2 service fees, your bet amount is 98:
+              </div>
+              <div style="padding: 4px;">
+                1. JOIN GREEN: if the result show on board 1,3,7,9, you will get (98*2) a total of 196
+              </div>
+              <div style="padding: 4px;">
+                if the result shows 5, you will get (98*1.5) a total of 147
+              </div>
+              <div style="padding: 4px;">
+                2.JOIN RED: if the result shows 2,4,6,8, you will get (98*2) a total of 196
+              </div>
+              <div style="padding: 4px;">
+                if the result shows 0, you will get (98*1.5) a total of 147
+              </div>
+              <div style="padding: 4px;">
+                3. JOIN VIOLET: if the result shows 0 or 5, you will get (98*4.5) a total of 441
+              </div>
+              <div style="padding: 4px;">
+                4. SELECT NUMBER: if the result is the same as the number you selected, you will get(98*9) a total of
+                882
+              </div>
+            </v-card>
+          </v-dialog>
+        </v-btn>
       </template>
       <template #extension>
         <div w-full>
