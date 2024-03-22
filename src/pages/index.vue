@@ -7,7 +7,7 @@ import Lang from '~/components/lang.vue'
 const { t: $t } = useI18n()
 
 const tab = ref()
-const isRead = localStorage.getItem('isRead') === '1'
+const isRead = localStorage.getItem('isRead') === '1' && localStorage.getItem('mobile')
 const showToast = ref(!isRead)
 const noticeList = ref<any>([])
 const items = ref([
@@ -35,7 +35,7 @@ function closeModal() {
       <v-toolbar-title><img src="/img/logo.png" w-25 alt="" srcset=""></v-toolbar-title>
       <div>
         <v-btn icon="i-mdi-download" @click="download" />
-        <v-btn icon="i-mdi-bell" />
+        <v-btn icon="i-mdi-bell" @click="showToast = true" />
         <Lang />
       </div>
       <!-- <template #extension>
@@ -87,19 +87,7 @@ function closeModal() {
       <v-card title="Notice">
         <v-card-text class="!text-12px !leading-18px">
           <span>
-            Important Tips: @lmportant Tips: Please do not transferdirectly to the account you have paid for.
-            Pleaserecharge
-            according to the account on the rechargeinterface. @In order to facilitate each user's withdrawal,our
-            withdrawal
-            time is 10:00-22:00. No withdrawalservice is provided at other times. @For rechargeissues,please send
-            details to
-            online customer service! Send these details, 1. Your cooe lD 2. Amount 3.Payment date 4.Payment screenshot
-            so
-            your issue canbe handled as soon as possible!5.Cooe has stoppedreporting problems through Google mailbox. lf
-            you
-            haveany questions, please provide feedback through the livechat in the lower left corner of the game
-            homepage.@For added account security, OTp login is requiredwhen logging in from a new mobile device. lf you
-            don'tsee the otp option, refresh your browser page. Thanks
+            {{ noticeList?.[0]?.message }}
           </span>
         </v-card-text>
 
